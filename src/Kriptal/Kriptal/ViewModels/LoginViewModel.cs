@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using Kriptal.Views;
+using Kriptal.Crypto;
 
 namespace Kriptal.ViewModels
 {
@@ -14,6 +15,13 @@ namespace Kriptal.ViewModels
 
         void ExecuteEnterCommand()
         {
+            var crypto = new RsaCrypto();
+            var keys = crypto.CreateKeyPair();
+            var text = "hola como te va";
+            var encrypted = crypto.RsaEncryptWithPublic(text, keys.PublicKey);
+            var decrypted = crypto.RsaDecryptWithPrivate(encrypted, keys.PrivateKey);
+
+
             Application.Current.MainPage = new TabbedPage
             {
                 Children =
