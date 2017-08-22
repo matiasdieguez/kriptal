@@ -2,9 +2,11 @@
 using Kriptal.ViewModels;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Kriptal.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemDetailPage : ContentPage
     {
         ItemDetailViewModel viewModel;

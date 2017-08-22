@@ -4,9 +4,11 @@ using Kriptal.Models;
 using Kriptal.ViewModels;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Kriptal.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsPage : ContentPage
     {
         ItemsViewModel viewModel;

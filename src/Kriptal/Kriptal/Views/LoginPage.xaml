@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:Kriptal.Resources"
+             x:Class="Kriptal.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center">
+            <Image 
+                Source="kriptal.png" 
+                Margin="20,20,20,20"/>
+            <Entry 
+                x:Name="Password" 
+                AutomationId="Password" 
+                IsPassword="True" 
+                Placeholder="{x:Static localization:AppResources.Password}"/>
+            <Button 
+                AutomationId="Enter" 
+                Text="{x:Static localization:AppResources.Enter}" 
+                Command="{Binding EnterCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

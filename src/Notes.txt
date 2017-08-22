@@ -25,3 +25,29 @@ Get user IP
 https://theconfuzedsourcecode.wordpress.com/2015/05/16/how-to-easily-get-device-ip-address-in-xamarin-forms-using-dependencyservice/
 
 Every time the ip changes Kriptal send to all users the new IP of the user
+
+
+---------------------
+
+-Cada vez que ingresa a Kriptal pide password (con esa password se genera la Key AES 4096 bytes)
+
+-Compartir mi Kriptal a cualquier contacto
+	-abrir plugin.share y seleccionar por que medio enviar la PK
+	-El receptor tiene Kriptal instalado y abre automáticamente el link kriptal://aslfeq8g7288224(pk)+Juan%20Perez y agrega el contacto
+
+-Pedir a un contacto conectarse conmigo en Kriptal
+	Abre Kriptal y a travez de plugin share selecciona a quien enviar la PK
+	Kriptal recibe kriptal://dgkadjgdagadg+Juan%20Perez y agrega la pk
+
+-Escanear QR para agregar contacto
+	Baja la PK del usuario que muestra el QR
+	(baja PK + Username)
+
+-Enviar un mensaje
+	Escribir con teclado en pantalla
+	Se envia un link encriptado con la PK del receptor y firmado con la K del emisor. kriptal://message+
+
+-Contactos
+-Recibidos
+
+-el kriptal se envia a todas las pk que no puede leerlo pero pueden verificar que este firmado por el blochain distribuido del Kriptal

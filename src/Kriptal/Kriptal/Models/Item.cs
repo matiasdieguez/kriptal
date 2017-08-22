@@ -7,9 +7,9 @@ namespace Kriptal.Models
     {
         /// <summary>
         /// Id for item
-        /// This works as the BlockNumber in the Blockchain
         /// </summary>
         public long Id { get; set; }
+
 
         /// <summary>
         /// Created at time stamp
@@ -22,8 +22,13 @@ namespace Kriptal.Models
         public string Text { get; set; }
 
         /// <summary>
-        /// 
+        /// Description
         /// </summary>
         public string Description { get; set; }
+        public string BlockNumber { get; set; }
+
+        public string Previous { get; set; }
+        public string Nonce { get; set; }
+        public string Hash { get; set; }
     }
 }
