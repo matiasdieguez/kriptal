@@ -51,3 +51,7 @@ Every time the ip changes Kriptal send to all users the new IP of the user
 -Recibidos
 
 -el kriptal se envia a todas las pk que no puede leerlo pero pueden verificar que este firmado por el blochain distribuido del Kriptal
+
+
+RSA
+https://github.com/onovotny/bc-csharp/blob/netstandard/crypto/test/src/openpgp/test/PGPRSATest.cs
