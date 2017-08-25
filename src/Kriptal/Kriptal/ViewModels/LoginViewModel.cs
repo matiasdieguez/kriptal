@@ -1,27 +1,56 @@
 ﻿using Xamarin.Forms;
 using Kriptal.Views;
 using Kriptal.Crypto;
+using System.Diagnostics;
+using System;
 
 namespace Kriptal.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
+
         public Command EnterCommand { get; set; }
+
+        private string text = string.Empty;
+        public string Text
+        {
+            get => text;
+            set => SetProperty(ref text, value);
+        }
 
         public LoginViewModel()
         {
             EnterCommand = new Command(() => ExecuteEnterCommand());
         }
 
-        void ExecuteEnterCommand()
+        async void ExecuteEnterCommand()
         {
+            IsBusy = true;
+            var timer = new Stopwatch();
+            timer.Start();
+
             var crypto = new RsaCrypto();
-            var keys = crypto.CreateKeyPair();
-            var text = "hola como te va";
-            var encrypted = crypto.RsaEncryptWithPublic(text, keys.PublicKey);
-            var decrypted = crypto.RsaDecryptWithPrivate(encrypted, keys.PrivateKey);
+            var keysTask = crypto.CreateKeyPair();
+            await keysTask.ContinueWith(async (k) =>
+            {
+                var keys = await k;
+                Text = $"Key generation time: {timer.Elapsed.TotalSeconds} secs. {Environment.NewLine}" +
+                            $"-BEGIN PUBLIC KEY-: {Environment.NewLine} {keys.PublicKey} {Environment.NewLine} -END PUBLIC KEY-";
 
+                var text = "hola como te va soy mati y estoy escribiendo un texto para cifrar que contiene 3173y5935320 235823853583 3583583583 3583 3583 5385 3583 535835 ";
+                var cryptoTimer = new Stopwatch();
+                cryptoTimer.Start();
+                var encrypted = crypto.RsaEncryptWithPublic(text, keys.PublicKey);
+                var decrypted = crypto.RsaDecryptWithPrivate(encrypted, keys.PrivateKey);
+                cryptoTimer.Stop();
+                Text += Environment.NewLine + "Encrypted data: " + Environment.NewLine + encrypted;
+                Text += Environment.NewLine + "Decrypted data: " + Environment.NewLine + decrypted;
+                Text += Environment.NewLine + "Crypto time: " + Environment.NewLine + cryptoTimer.Elapsed.TotalSeconds;
 
+                IsBusy = false;
+            });
+
+            return;
             Application.Current.MainPage = new TabbedPage
             {
                 Children =

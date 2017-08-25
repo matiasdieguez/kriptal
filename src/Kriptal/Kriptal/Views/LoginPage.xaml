@@ -4,19 +4,23 @@
              xmlns:localization="clr-namespace:Kriptal.Resources"
              x:Class="Kriptal.Views.LoginPage">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center">
-            <Image 
+        <ScrollView>
+            <StackLayout HorizontalOptions="Center">
+                <Image 
                 Source="kriptal.png" 
                 Margin="20,20,20,20"/>
-            <Entry 
+                <Entry 
                 x:Name="Password" 
                 AutomationId="Password" 
                 IsPassword="True" 
                 Placeholder="{x:Static localization:AppResources.Password}"/>
-            <Button 
+                <Button 
                 AutomationId="Enter" 
                 Text="{x:Static localization:AppResources.Enter}" 
                 Command="{Binding EnterCommand}"/>
-        </StackLayout>
+                <Label Text="{Binding Text}"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

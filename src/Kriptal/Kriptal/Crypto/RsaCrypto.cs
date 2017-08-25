@@ -11,6 +11,7 @@ using Org.BouncyCastle.X509;
 using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Kriptal.Crypto
 {
@@ -22,20 +23,23 @@ namespace Kriptal.Crypto
 
     public class RsaCrypto
     {
-        public KriptalKeyPair CreateKeyPair()
+        public async Task<KriptalKeyPair> CreateKeyPair()
         {
             var kpgen = new RsaKeyPairGenerator();
+            var privateKey = string.Empty;
+            var publicKey = string.Empty;
 
             kpgen.Init(new KeyGenerationParameters(new SecureRandom(), 2048));
+            await Task.Run(() => 
+            {
+                var keyPair = kpgen.GenerateKeyPair();
 
-            var keyPair = kpgen.GenerateKeyPair();
+                PrivateKeyInfo pkInfo = PrivateKeyInfoFactory.CreatePrivateKeyInfo(keyPair.Private);
+                privateKey = Convert.ToBase64String(pkInfo.GetDerEncoded());
 
-            PrivateKeyInfo pkInfo = PrivateKeyInfoFactory.CreatePrivateKeyInfo(keyPair.Private);
-            var privateKey = Convert.ToBase64String(pkInfo.GetDerEncoded());
-
-            SubjectPublicKeyInfo info = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(keyPair.Public);
-            var publicKey = Convert.ToBase64String(info.GetDerEncoded());
-
+                SubjectPublicKeyInfo info = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(keyPair.Public);
+                publicKey = Convert.ToBase64String(info.GetDerEncoded());
+            });
             return new KriptalKeyPair { PrivateKey = privateKey, PublicKey = publicKey };
         }
 

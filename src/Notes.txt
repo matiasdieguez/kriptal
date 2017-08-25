@@ -55,3 +55,8 @@ Every time the ip changes Kriptal send to all users the new IP of the user
 
 RSA
 https://github.com/onovotny/bc-csharp/blob/netstandard/crypto/test/src/openpgp/test/PGPRSATest.cs
+
+1024 = 10 segundos
+2048 = 86 a 150 segundos
+3072 = 792,2 segundos = 13 minutos
+4096 = ??
