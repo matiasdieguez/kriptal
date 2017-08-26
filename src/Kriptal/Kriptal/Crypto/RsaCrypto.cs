@@ -29,7 +29,7 @@ namespace Kriptal.Crypto
             var privateKey = string.Empty;
             var publicKey = string.Empty;
 
-            kpgen.Init(new KeyGenerationParameters(new SecureRandom(), 2048));
+            kpgen.Init(new KeyGenerationParameters(new SecureRandom(), 1024));
             await Task.Run(() => 
             {
                 var keyPair = kpgen.GenerateKeyPair();
@@ -40,6 +40,7 @@ namespace Kriptal.Crypto
                 SubjectPublicKeyInfo info = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(keyPair.Public);
                 publicKey = Convert.ToBase64String(info.GetDerEncoded());
             });
+
             return new KriptalKeyPair { PrivateKey = privateKey, PublicKey = publicKey };
         }
 

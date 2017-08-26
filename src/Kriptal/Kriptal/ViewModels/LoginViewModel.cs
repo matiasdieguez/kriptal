@@ -37,7 +37,7 @@ namespace Kriptal.ViewModels
                 Text = $"Key generation time: {timer.Elapsed.TotalSeconds} secs. {Environment.NewLine}" +
                             $"-BEGIN PUBLIC KEY-: {Environment.NewLine} {keys.PublicKey} {Environment.NewLine} -END PUBLIC KEY-";
 
-                var text = "hola como te va soy mati y estoy escribiendo un texto para cifrar que contiene 3173y5935320 235823853583 3583583583 3583 3583 5385 3583 535835 ";
+                var text = "hola como te va soy mati";
                 var cryptoTimer = new Stopwatch();
                 cryptoTimer.Start();
                 var encrypted = crypto.RsaEncryptWithPublic(text, keys.PublicKey);
@@ -46,6 +46,14 @@ namespace Kriptal.ViewModels
                 Text += Environment.NewLine + "Encrypted data: " + Environment.NewLine + encrypted;
                 Text += Environment.NewLine + "Decrypted data: " + Environment.NewLine + decrypted;
                 Text += Environment.NewLine + "Crypto time: " + Environment.NewLine + cryptoTimer.Elapsed.TotalSeconds;
+
+                var aes = new AesCrypto();
+                var keyString = "jDxESdRrcYKmSZi7IOW4lw==";
+
+                var encryptedPrivateKey = aes.Encrypt(keys.PrivateKey, keyString);
+                var decryptedPrivateKey = aes.Decrypt(encryptedPrivateKey.EncryptedText, keyString, encryptedPrivateKey.Iv);
+                Text += Environment.NewLine + "++++Encrypted Key: " + Environment.NewLine + encryptedPrivateKey;
+                Text += Environment.NewLine + "++++Decrypted Key: " + Environment.NewLine + decryptedPrivateKey;
 
                 IsBusy = false;
             });
