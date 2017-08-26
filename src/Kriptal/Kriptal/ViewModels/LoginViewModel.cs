@@ -48,6 +48,7 @@ namespace Kriptal.ViewModels
                 Text += Environment.NewLine + "Crypto time: " + Environment.NewLine + cryptoTimer.Elapsed.TotalSeconds;
 
                 var aes = new AesCrypto();
+                //var keyString = new ShaHash().DeriveKey("jDxESdRrcYKmSZi7IOW4lw==");
                 var keyString = "jDxESdRrcYKmSZi7IOW4lw==";
 
                 var encryptedPrivateKey = aes.Encrypt(keys.PrivateKey, keyString);

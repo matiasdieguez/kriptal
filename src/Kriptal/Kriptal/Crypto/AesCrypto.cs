@@ -11,7 +11,7 @@ namespace Kriptal.Crypto
 
     public class AesCrypto
     {
-        public KriptalAesResult Encrypt(string input, string keyString)
+        public AesResult Encrypt(string input, string keyString)
         {
             var inputBytes = Encoding.UTF8.GetBytes(input);
             var iv = new byte[16];
@@ -30,7 +30,7 @@ namespace Kriptal.Crypto
             var length = cipher.ProcessBytes(inputBytes, outputBytes, 0);
             cipher.DoFinal(outputBytes, length); //Do the final block
             var encryptedInput = Convert.ToBase64String(outputBytes);
-            return new KriptalAesResult { EncryptedText = encryptedInput, Iv = iv };
+            return new AesResult { EncryptedText = encryptedInput, Iv = iv };
         }
 
         public string Decrypt(string input, string keyString, byte[] iv)

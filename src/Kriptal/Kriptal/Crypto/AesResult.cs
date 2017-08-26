@@ -1,6 +1,6 @@
 ﻿namespace Kriptal.Crypto
 {
-    public class KriptalAesResult
+    public class AesResult
     {
         public string EncryptedText { get; set; }
         public byte[] Iv { get; set; }

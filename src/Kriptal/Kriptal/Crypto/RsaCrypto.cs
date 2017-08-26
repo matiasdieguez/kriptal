@@ -18,7 +18,7 @@ namespace Kriptal.Crypto
 
     public class RsaCrypto
     {
-        public async Task<KriptalRsaKeyPair> CreateKeyPair()
+        public async Task<RsaKeyPair> CreateKeyPair()
         {
             var kpgen = new RsaKeyPairGenerator();
             var privateKey = string.Empty;
@@ -36,7 +36,7 @@ namespace Kriptal.Crypto
                 publicKey = Convert.ToBase64String(info.GetDerEncoded());
             });
 
-            return new KriptalRsaKeyPair { PrivateKey = privateKey, PublicKey = publicKey };
+            return new RsaKeyPair { PrivateKey = privateKey, PublicKey = publicKey };
         }
 
         public string EncryptWithPublic(string clearText, string publicKey)
