@@ -29,8 +29,8 @@ namespace Kriptal.ViewModels
             var timer = new Stopwatch();
             timer.Start();
 
-            var crypto = new RsaCrypto();
-            var keysTask = crypto.CreateKeyPair();
+            var rsa = new RsaCrypto();
+            var keysTask = rsa.CreateKeyPair();
             await keysTask.ContinueWith(async (k) =>
             {
                 var keys = await k;
@@ -40,8 +40,8 @@ namespace Kriptal.ViewModels
                 var text = "hola como te va soy mati";
                 var cryptoTimer = new Stopwatch();
                 cryptoTimer.Start();
-                var encrypted = crypto.RsaEncryptWithPublic(text, keys.PublicKey);
-                var decrypted = crypto.RsaDecryptWithPrivate(encrypted, keys.PrivateKey);
+                var encrypted = rsa.EncryptWithPublic(text, keys.PublicKey);
+                var decrypted = rsa.DecryptWithPrivate(encrypted, keys.PrivateKey);
                 cryptoTimer.Stop();
                 Text += Environment.NewLine + "Encrypted data: " + Environment.NewLine + encrypted;
                 Text += Environment.NewLine + "Decrypted data: " + Environment.NewLine + decrypted;

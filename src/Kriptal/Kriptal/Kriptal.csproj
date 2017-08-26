@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="Crypto\AesCrypto.cs" />
     <Compile Include="Crypto\KriptalAesResult.cs" />
+    <Compile Include="Crypto\KriptalRsaKeyPair.cs" />
     <Compile Include="Crypto\RsaCrypto.cs" />
     <Compile Include="Helpers\MessengingCenterAlert.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />

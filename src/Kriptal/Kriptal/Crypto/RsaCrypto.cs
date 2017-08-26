@@ -15,15 +15,10 @@ using System.Threading.Tasks;
 
 namespace Kriptal.Crypto
 {
-    public class KriptalKeyPair
-    {
-        public string PrivateKey { get; set; }
-        public string PublicKey { get; set; }
-    }
 
     public class RsaCrypto
     {
-        public async Task<KriptalKeyPair> CreateKeyPair()
+        public async Task<KriptalRsaKeyPair> CreateKeyPair()
         {
             var kpgen = new RsaKeyPairGenerator();
             var privateKey = string.Empty;
@@ -41,10 +36,10 @@ namespace Kriptal.Crypto
                 publicKey = Convert.ToBase64String(info.GetDerEncoded());
             });
 
-            return new KriptalKeyPair { PrivateKey = privateKey, PublicKey = publicKey };
+            return new KriptalRsaKeyPair { PrivateKey = privateKey, PublicKey = publicKey };
         }
 
-        public string RsaEncryptWithPublic(string clearText, string publicKey)
+        public string EncryptWithPublic(string clearText, string publicKey)
         {
             publicKey = "-----BEGIN PUBLIC KEY-----" + Environment.NewLine + publicKey + Environment.NewLine + "-----END PUBLIC KEY-----";
             var bytesToEncrypt = Encoding.UTF8.GetBytes(clearText);
@@ -63,7 +58,7 @@ namespace Kriptal.Crypto
 
         }
 
-        public string RsaEncryptWithPrivate(string clearText, string privateKey)
+        public string EncryptWithPrivate(string clearText, string privateKey)
         {
             var bytesToEncrypt = Encoding.UTF8.GetBytes(clearText);
 
@@ -82,7 +77,7 @@ namespace Kriptal.Crypto
 
         // Decryption:
 
-        public string RsaDecryptWithPrivate(string base64Input, string privateKey)
+        public string DecryptWithPrivate(string base64Input, string privateKey)
         {
             privateKey = "-----BEGIN PRIVATE KEY-----" + Environment.NewLine + privateKey + Environment.NewLine + "-----END PRIVATE KEY-----";
 
@@ -101,7 +96,7 @@ namespace Kriptal.Crypto
             return decrypted;
         }
 
-        public string RsaDecryptWithPublic(string base64Input, string publicKey)
+        public string DecryptWithPublic(string base64Input, string publicKey)
         {
             var bytesToDecrypt = Convert.FromBase64String(base64Input);
 
