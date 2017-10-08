@@ -1,25 +1,26 @@
 ﻿using System;
 
-using Kriptal.Models;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using Kriptal.Models;
 
 namespace Kriptal.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewItemPage : ContentPage
+    public partial class NewUserPage : ContentPage
     {
-        public Item Item { get; set; }
+        public User User { get; set; }
 
-        public NewItemPage()
+        public NewUserPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            User = new User
             {
-                Text = "Item name",
-                Description = "This is a nice description"
+                Name = "",
+                PublicKey = "",
+                Id = Guid.NewGuid().ToString()
             };
 
             BindingContext = this;
@@ -27,7 +28,7 @@ namespace Kriptal.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
+            MessagingCenter.Send(this, "AddItem", User);
             await Navigation.PopToRootAsync();
         }
     }

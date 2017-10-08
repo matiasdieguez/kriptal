@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:Kriptal.Resources"
+             x:Class="Kriptal.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image
+                Source="qr.png"
+                WidthRequest="400"
+                HeightRequest="400"/>
+            <Button 
+                    AutomationId="Enter" 
+                    HorizontalOptions="Center"
+                    Text="{x:Static localization:AppResources.ShareContact}" 
+                    Command="{Binding EnterCommand}"/>
+            <Button 
+                    AutomationId="Enter" 
+                    HorizontalOptions="Center"
+                    Text="{x:Static localization:AppResources.ScanContact}" 
+                    Command="{Binding EnterCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,14 +6,14 @@ using Kriptal.ViewModels;
 namespace Kriptal.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class HomePage : ContentPage
     {
-        LoginViewModel viewModel;
+        HomeViewModel _viewModel;
 
-        public LoginPage()
+        public HomePage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new LoginViewModel();
+            BindingContext = _viewModel = new HomeViewModel();
         }
     }
 }

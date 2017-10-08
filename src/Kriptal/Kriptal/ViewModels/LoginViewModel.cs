@@ -1,8 +1,8 @@
 ﻿using Xamarin.Forms;
+
 using Kriptal.Views;
 using Kriptal.Crypto;
-using System.Diagnostics;
-using System;
+using Kriptal.Resources;
 
 namespace Kriptal.ViewModels
 {
@@ -18,66 +18,42 @@ namespace Kriptal.ViewModels
             set => SetProperty(ref text, value);
         }
 
-        public LoginViewModel()
+        private string password = string.Empty;
+        public string Password
         {
-            EnterCommand = new Command(() => ExecuteEnterCommand());
+            get => password;
+            set => SetProperty(ref password, value);
         }
 
-        async void ExecuteEnterCommand()
+        public LoginViewModel()
+        {
+            EnterCommand = new Command( () => ExecuteEnterCommand());
+        }
+
+        void ExecuteEnterCommand()
         {
             IsBusy = true;
-            var timer = new Stopwatch();
-            timer.Start();
 
-            var rsa = new RsaCrypto();
-            var keysTask = rsa.CreateKeyPair();
-            await keysTask.ContinueWith(async (k) =>
-            {
-                var keys = await k;
-                Text = $"Key generation time: {timer.Elapsed.TotalSeconds} secs. {Environment.NewLine}" +
-                            $"-BEGIN PUBLIC KEY-: {Environment.NewLine} {keys.PublicKey} {Environment.NewLine} -END PUBLIC KEY-";
+            var keyString = new ShaHash().DeriveKey(Text);
 
-                var text = "hola como te va soy mati";
-                var cryptoTimer = new Stopwatch();
-                cryptoTimer.Start();
-                var encrypted = rsa.EncryptWithPublic(text, keys.PublicKey);
-                var decrypted = rsa.DecryptWithPrivate(encrypted, keys.PrivateKey);
-                cryptoTimer.Stop();
-                Text += Environment.NewLine + "Encrypted data: " + Environment.NewLine + encrypted;
-                Text += Environment.NewLine + "Decrypted data: " + Environment.NewLine + decrypted;
-                Text += Environment.NewLine + "Crypto time: " + Environment.NewLine + cryptoTimer.Elapsed.TotalSeconds;
-
-                var aes = new AesCrypto();
-                //var keyString = new ShaHash().DeriveKey("jDxESdRrcYKmSZi7IOW4lw==");
-                var keyString = "jDxESdRrcYKmSZi7IOW4lw==";
-
-                var encryptedPrivateKey = aes.Encrypt(keys.PrivateKey, keyString);
-                var decryptedPrivateKey = aes.Decrypt(encryptedPrivateKey.EncryptedText, keyString, encryptedPrivateKey.Iv);
-                Text += Environment.NewLine + "++++Encrypted Key: " + Environment.NewLine + encryptedPrivateKey;
-                Text += Environment.NewLine + "++++Decrypted Key: " + Environment.NewLine + decryptedPrivateKey;
-
-                IsBusy = false;
-            });
-
-            return;
             Application.Current.MainPage = new TabbedPage
             {
                 Children =
                 {
-                    new NavigationPage(new ItemsPage())
+                    new NavigationPage(new HomePage())
                     {
-                        Title = "Inbox",
-                        Icon = Device.OnPlatform("tab_feed.png",null,null)
+                        Title = AppResources.Home,
+                        Icon = "tab_feed.png"
                     },
-                    new NavigationPage(new ItemsPage())
+                    new NavigationPage(new UsersPage())
                     {
-                        Title = "Contacts",
-                        Icon = Device.OnPlatform("tab_feed.png",null,null)
+                        Title = AppResources.Contacts,
+                        Icon = "tab_feed.png"
                     },
                     new NavigationPage(new AboutPage())
                     {
-                        Title = "About",
-                        Icon = Device.OnPlatform("tab_about.png",null,null)
+                        Title = AppResources.About,
+                        Icon = "tab_feed.png"
                     },
                 }
             };

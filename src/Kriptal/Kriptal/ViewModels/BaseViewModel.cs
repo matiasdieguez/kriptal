@@ -1,24 +1,16 @@
 ﻿using Kriptal.Helpers;
-using Kriptal.Models;
-using Kriptal.Services;
-
-using Xamarin.Forms;
 
 namespace Kriptal.ViewModels
 {
     public class BaseViewModel : ObservableObject
     {
-        /// <summary>
-        /// Get the azure service instance
-        /// </summary>
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
         bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
+
         /// <summary>
         /// Private backing field to hold the title
         /// </summary>

@@ -62,6 +62,24 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Contacts.
+        /// </summary>
+        public static string Contacts {
+            get {
+                return ResourceManager.GetString("Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Enter.
         /// </summary>
         public static string Enter {
@@ -71,11 +89,38 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Password.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Scan contact.
+        /// </summary>
+        public static string ScanContact {
+            get {
+                return ResourceManager.GetString("ScanContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Share my contact.
+        /// </summary>
+        public static string ShareContact {
+            get {
+                return ResourceManager.GetString("ShareContact", resourceCulture);
             }
         }
     }

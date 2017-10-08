@@ -1,5 +1,4 @@
 ﻿using Kriptal.Views;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,6 +7,8 @@ namespace Kriptal
 {
     public partial class App : Application
     {
+        public static string Password { get; set; }
+
         public App()
         {
             InitializeComponent();

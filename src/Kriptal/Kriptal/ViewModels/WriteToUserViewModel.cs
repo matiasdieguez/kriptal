@@ -2,13 +2,13 @@
 
 namespace Kriptal.ViewModels
 {
-    public class ItemDetailViewModel : BaseViewModel
+    public class WriteToUserViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public User User { get; set; }
+        public WriteToUserViewModel(User user = null)
         {
-            Title = item.Text;
-            Item = item;
+            Title = user.Name;
+            User = user;
         }
 
         int quantity = 1;

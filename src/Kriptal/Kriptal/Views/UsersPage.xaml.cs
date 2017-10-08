@@ -1,48 +1,48 @@
 ﻿using System;
 
-using Kriptal.Models;
-using Kriptal.ViewModels;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using Kriptal.Models;
+using Kriptal.ViewModels;
 
 namespace Kriptal.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ItemsPage : ContentPage
+    public partial class UsersPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        UsersViewModel _viewModel;
 
-        public ItemsPage()
+        public UsersPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new UsersViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as User;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new WriteToUserPage(new WriteToUserViewModel(item)));
 
             // Manually deselect item
-            ItemsListView.SelectedItem = null;
+            UsersListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewItemPage());
+            await Navigation.PushAsync(new NewUserPage());
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (_viewModel.Users.Count == 0)
+                _viewModel.LoadUsersCommand.Execute(null);
         }
     }
 }
