@@ -34,7 +34,7 @@ namespace Kriptal.ViewModels
         {
             IsBusy = true;
 
-            var keyString = new ShaHash().DeriveKey(Text);
+            var keyString = new ShaHash().DeriveShaKey(Password, 64);
 
             Application.Current.MainPage = new TabbedPage
             {
@@ -43,17 +43,17 @@ namespace Kriptal.ViewModels
                     new NavigationPage(new HomePage())
                     {
                         Title = AppResources.Home,
-                        Icon = "tab_feed.png"
+                        Icon = "slideout.png"
                     },
                     new NavigationPage(new UsersPage())
                     {
                         Title = AppResources.Contacts,
-                        Icon = "tab_feed.png"
+                        Icon = "slideout.png"
                     },
                     new NavigationPage(new AboutPage())
                     {
                         Title = AppResources.About,
-                        Icon = "tab_feed.png"
+                        Icon = "slideout.png"
                     },
                 }
             };
