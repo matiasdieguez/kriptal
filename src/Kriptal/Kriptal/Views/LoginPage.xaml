@@ -14,6 +14,7 @@
                     x:Name="Password" 
                     HorizontalOptions="Center"
                     AutomationId="Password" 
+                    WidthRequest="400"
                     Text="{Binding Password}"
                     IsPassword="True" 
                     Placeholder="{x:Static localization:AppResources.Password}"/>

@@ -31,6 +31,15 @@ namespace Kriptal.Models
         /// <summary>
         /// MyPublicKey
         /// </summary>
-        MyPublicKey
+        MyPublicKey,
+        /// <summary>
+        /// MyPrivateKey
+        /// </summary>
+        MyPrivateKey,
+        /// <summary>
+        /// SaltBytes
+        /// </summary>
+        SaltBytes
+
     }
 }

@@ -14,30 +14,63 @@ namespace Kriptal.Data
     public class LocalDataManager
     {
         /// <summary>
+        /// Key
+        /// </summary>
+        public byte[] Key { get; set; }
+
+        /// <summary>
         /// Config
         /// </summary>
-        private static readonly RealmConfiguration Config = new RealmConfiguration { ShouldDeleteIfMigrationNeeded = false };
+        private readonly RealmConfiguration Config;
+
+        public LocalDataManager(byte[] key)
+        {
+            Key = key;
+            Config = new RealmConfiguration { ShouldDeleteIfMigrationNeeded = true, EncryptionKey = key };
+        }
 
         /// <summary>
         /// DbInstance
         /// </summary>
-        public static Realm DbInstance => Realm.GetInstance(Config);
+        public Realm DbInstance => Realm.GetInstance(Config);
 
         /// <summary>
         /// ExistsDb
         /// </summary>
         /// <returns>bool</returns>
-        public static bool ExistsDb()
+        public bool ExistsDb()
         {
             var dbId = DbInstance.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.DatabaseId.ToString());
             return dbId != null;
         }
 
         /// <summary>
+        /// ExistsDb
+        /// </summary>
+        /// <returns>bool</returns>
+        public static byte[] GetSaltBytes()
+        {
+            var db = Realm.GetInstance("kriptal1");
+            var salt = db.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.SaltBytes.ToString());
+            return Convert.FromBase64String(salt.Value);
+        }
+
+        /// <summary>
+        /// ExistsPassword
+        /// </summary>
+        /// <returns>bool</returns>
+        public static bool ExistsPassword()
+        {
+            var db = Realm.GetInstance("kriptal1");
+            var salt = db.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.SaltBytes.ToString());
+            return salt != null;
+        }
+
+        /// <summary>
         /// GetUID
         /// </summary>
         /// <returns></returns>
-        public static string GetUID()
+        public string GetUID()
         {
             var uId = DbInstance.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.DatabaseId.ToString()).Value;
             return uId;
@@ -46,7 +79,7 @@ namespace Kriptal.Data
         /// <summary>
         /// CreateDb
         /// </summary>
-        public static void CreateDb()
+        public void CreateDb()
         {
             var db = Realm.GetInstance(Config);
 
@@ -65,7 +98,7 @@ namespace Kriptal.Data
         /// <summary>
         /// DeleteDb
         /// </summary>
-        public static void DeleteDb()
+        public void DeleteDb()
         {
             Realm.DeleteRealm(Config);
         }
@@ -75,7 +108,7 @@ namespace Kriptal.Data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>
-        public static void Save<T>(T data) where T : RealmObject
+        public void Save<T>(T data) where T : RealmObject
         {
             var db = Realm.GetInstance(Config);
 
@@ -91,7 +124,7 @@ namespace Kriptal.Data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>
-        public static void Delete<T>(T data) where T : RealmObject
+        public void Delete<T>(T data) where T : RealmObject
         {
             var db = Realm.GetInstance(Config);
 
@@ -107,17 +140,17 @@ namespace Kriptal.Data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static IQueryable<T> Query<T>() where T : RealmObject
+        public IQueryable<T> Query<T>() where T : RealmObject
         {
             return DbInstance.All<T>();
         }
 
         /// <summary>
-        /// 
+        /// List
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static List<T> List<T>() where T : RealmObject
+        public List<T> List<T>() where T : RealmObject
         {
             return DbInstance.All<T>().ToList();
         }
@@ -128,7 +161,7 @@ namespace Kriptal.Data
         /// <typeparam name="T"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static T Get<T>(Func<T, bool> predicate) where T : RealmObject
+        public T Get<T>(Func<T, bool> predicate) where T : RealmObject
         {
             return DbInstance.All<T>().SingleOrDefault(predicate);
         }
@@ -138,7 +171,7 @@ namespace Kriptal.Data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T FirstOrDefault<T>() where T : RealmObject
+        public T FirstOrDefault<T>() where T : RealmObject
         {
             return DbInstance.All<T>().FirstOrDefault();
         }
@@ -149,7 +182,7 @@ namespace Kriptal.Data
         /// <typeparam name="T"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static List<T> Where<T>(Func<T, bool> predicate) where T : RealmObject
+        public List<T> Where<T>(Func<T, bool> predicate) where T : RealmObject
         {
             return DbInstance.All<T>().Where(predicate).ToList();
         }
@@ -158,9 +191,55 @@ namespace Kriptal.Data
         /// SaveMyPublicKey
         /// </summary>
         /// <param name="publicKey">publicKey</param>
-        public static void SaveMyPublicKey(string publicKey)
+        public void SavePublicKey(string publicKey)
         {
             Save(new DbControlModel { Key = DbControlKeys.MyPublicKey.ToString(), Value = publicKey });
+        }
+
+        /// <summary>
+        /// GetMyPublicKey
+        /// </summary>
+        public string GetPublicKey()
+        {
+            var key = DbInstance.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.MyPublicKey.ToString());
+            return key.Value;
+        }
+
+        /// <summary>
+        /// SaveMyPrivateKey
+        /// </summary>
+        /// <param name="key">key</param>
+        public void SavePrivateKey(string key)
+        {
+            Save(new DbControlModel { Key = DbControlKeys.MyPrivateKey.ToString(), Value = key });
+        }
+
+        /// <summary>
+        /// GetPrivateKey
+        /// </summary>
+        public string GetPrivateKey()
+        {
+            var key = DbInstance.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.MyPrivateKey.ToString());
+            return key.Value;
+        }
+
+        /// <summary>
+        /// SaveSaltBytes
+        /// </summary>
+        /// <param name="salt">salt</param>
+        public static void SaveSaltBytes(byte[] salt)
+        {
+            var db = Realm.GetInstance("kriptal1");
+
+            using (var transaction = db.BeginWrite())
+            {
+                db.Add(new DbControlModel
+                {
+                    Key = DbControlKeys.SaltBytes.ToString(),
+                    Value = Convert.ToBase64String(salt)
+                }, true);
+                transaction.Commit();
+            }
         }
 
         static DateTime ConvertFromDateTimeOffset(DateTimeOffset dateTime)

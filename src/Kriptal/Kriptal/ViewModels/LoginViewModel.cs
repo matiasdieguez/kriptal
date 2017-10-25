@@ -1,15 +1,19 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Linq;
+using Xamarin.Forms;
 
 using Kriptal.Views;
 using Kriptal.Crypto;
 using Kriptal.Resources;
+using Kriptal.Data;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Kriptal.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-
-        public Command EnterCommand { get; set; }
+        public Command EnterCommand => new Command(async () => await ExecuteEnterCommand());
 
         private string text = string.Empty;
         public string Text
@@ -27,14 +31,80 @@ namespace Kriptal.ViewModels
 
         public LoginViewModel()
         {
-            EnterCommand = new Command( () => ExecuteEnterCommand());
         }
 
-        void ExecuteEnterCommand()
+        /// <summary>
+        /// CheckStrongPassword
+        /// </summary>
+        /// <param name="password">password</param>
+        /// <returns>bool</returns>
+        public static bool CheckStrongPassword(string password)
+        {
+            if (string.IsNullOrEmpty(password) ||
+                string.IsNullOrWhiteSpace(password))
+                return false;
+
+            var array = password.ToCharArray();
+
+            if (array.Length >= 8 &&
+                array.Any(char.IsLetter) &&
+                array.Any(char.IsUpper) &&
+                array.Any(char.IsLower) &&
+                array.Any(char.IsSymbol) &&
+                array.Any(char.IsDigit))
+                return true;
+            else
+                return false;
+        }
+
+        async Task ExecuteEnterCommand()
         {
             IsBusy = true;
 
-            var keyString = new ShaHash().DeriveShaKey(Password, 64);
+            if (!CheckStrongPassword(Password))
+            {
+                IsBusy = false;
+                await Application.Current.MainPage.DisplayAlert(AppResources.Title, AppResources.MustBeStrongPassword, AppResources.OK);
+                return;
+            }
+
+            try
+            {
+                var sha = new ShaHash();
+
+                LocalDataManager localDataManager;
+
+                if (!LocalDataManager.ExistsPassword())
+                {
+                    var hash = sha.DeriveShaKey(Password, 64);
+
+                    localDataManager = new LocalDataManager(Convert.FromBase64String(hash.Digest));
+                    LocalDataManager.SaveSaltBytes(hash.Salt);
+                    App.Password = Convert.FromBase64String(hash.Digest);
+
+                    localDataManager.CreateDb();
+
+                    var rsa = new RsaCrypto();
+                    var keys = await rsa.CreateKeyPair();
+                    localDataManager.SavePrivateKey(keys.PrivateKey);
+                    localDataManager.SavePublicKey(keys.PublicKey);
+                }
+                else
+                {
+                    var key = sha.DeriveShaKey(Password, 64, LocalDataManager.GetSaltBytes());
+                    localDataManager = new LocalDataManager(Convert.FromBase64String(key.Digest));
+                    App.Password = Convert.FromBase64String(key.Digest);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                IsBusy = false;
+                await Application.Current.MainPage.DisplayAlert(AppResources.Title, AppResources.IncorrectPassword, AppResources.OK);
+                return;
+            }
+            IsBusy = false;
 
             Application.Current.MainPage = new TabbedPage
             {
@@ -42,18 +112,15 @@ namespace Kriptal.ViewModels
                 {
                     new NavigationPage(new HomePage())
                     {
-                        Title = AppResources.Home,
-                        Icon = "slideout.png"
+                        Icon = "home.png"
                     },
                     new NavigationPage(new UsersPage())
                     {
-                        Title = AppResources.Contacts,
-                        Icon = "slideout.png"
+                        Icon = "contacts.png"
                     },
                     new NavigationPage(new AboutPage())
                     {
-                        Title = AppResources.About,
-                        Icon = "slideout.png"
+                        Icon = "about.png"
                     },
                 }
             };

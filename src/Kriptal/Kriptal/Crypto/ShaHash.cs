@@ -125,7 +125,7 @@ namespace Kriptal.Crypto
             return key;
         }
 
-        public string DeriveShaKey(string password, int keySize)
+        public ShaResult DeriveShaKey(string password, int keySize)
         {
             int iterations = 1; // The number of times to encrypt the password - change this
             int saltByteSize = 8; // the salt size - change this
@@ -138,7 +138,21 @@ namespace Kriptal.Crypto
             string key = hash.Pbkdf2Sha256GetHash(password, saltString, iterations, hashByteSize);
 
             //var isValid = hash.ValidatePassword(password, saltBytes, iterations, hashByteSize, Convert.FromBase64String(key));
-            return key;
+            return new ShaResult { Digest = key, Salt = saltBytes };
+        }
+
+        public ShaResult DeriveShaKey(string password, int keySize, byte[] saltBytes)
+        {
+            int iterations = 1; // The number of times to encrypt the password - change this
+            int hashByteSize = keySize; // the final hash - change this
+
+            var hash = new ShaHash();
+
+            string saltString = Convert.ToBase64String(saltBytes);
+            string key = hash.Pbkdf2Sha256GetHash(password, saltString, iterations, hashByteSize);
+
+            //var isValid = hash.ValidatePassword(password, saltBytes, iterations, hashByteSize, Convert.FromBase64String(key));
+            return new ShaResult { Digest = key, Salt = saltBytes };
         }
     }
 }

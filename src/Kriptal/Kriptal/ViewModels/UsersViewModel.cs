@@ -43,7 +43,7 @@ namespace Kriptal.ViewModels
 
                 await Task.Run(() =>
                 {
-                    var users = LocalDataManager.List<User>();
+                    var users = new LocalDataManager(App.Password).List<User>();
                     Users.ReplaceRange(users);
                 });
             }

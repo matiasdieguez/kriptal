@@ -60,3 +60,6 @@ https://github.com/onovotny/bc-csharp/blob/netstandard/crypto/test/src/openpgp/t
 2048 = 86 a 150 segundos
 3072 = 792,2 segundos = 13 minutos
 4096 = ??
+
+Enviar Email con attachments utilizando Xam.Plugins.Messaging
+https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Details.md

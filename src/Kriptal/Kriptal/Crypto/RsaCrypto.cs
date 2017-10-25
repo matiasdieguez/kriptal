@@ -24,7 +24,7 @@ namespace Kriptal.Crypto
             var privateKey = string.Empty;
             var publicKey = string.Empty;
 
-            kpgen.Init(new KeyGenerationParameters(new SecureRandom(), 1024));
+            kpgen.Init(new KeyGenerationParameters(new SecureRandom(), 2048));
             await Task.Run(() => 
             {
                 var keyPair = kpgen.GenerateKeyPair();

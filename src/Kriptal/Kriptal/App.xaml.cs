@@ -7,7 +7,7 @@ namespace Kriptal
 {
     public partial class App : Application
     {
-        public static string Password { get; set; }
+        public static byte[] Password { get; set; }
 
         public App()
         {
