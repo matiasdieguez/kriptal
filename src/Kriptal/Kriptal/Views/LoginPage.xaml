@@ -11,8 +11,28 @@
                     Source="kriptal.png" 
                     Margin="20,20,20,20"/>
                 <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" />
-                <Label 
+                <Entry 
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    AutomationId="Name" 
                     FontSize="Medium"
+                    WidthRequest="400"
+                    Margin="20,20,20,20"
+                    Text="{Binding Name}"
+                    Placeholder="{x:Static localization:AppResources.Name}"/>
+                <Entry 
+                    x:Name="Password" 
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    AutomationId="Password" 
+                    FontSize="Medium"
+                    WidthRequest="400"
+                    Margin="20,20,20,20"
+                    Text="{Binding Password}"
+                    IsPassword="True" 
+                    Placeholder="{x:Static localization:AppResources.Password}"/>
+                <Label 
+                    FontSize="Small"
                     WidthRequest="400"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
@@ -21,22 +41,11 @@
                     Text="{Binding PasswordInfo}"
                     />
                 <Entry 
-                    x:Name="Password" 
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    AutomationId="Password" 
-                    FontSize="Large"
-                    WidthRequest="400"
-                    Margin="20,20,20,20"
-                    Text="{Binding Password}"
-                    IsPassword="True" 
-                    Placeholder="{x:Static localization:AppResources.Password}"/>
-                <Entry 
                     x:Name="RepeatPassword" 
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     AutomationId="RepeatPassword" 
-                    FontSize="Large"
+                    FontSize="Medium"
                     WidthRequest="400"
                     Margin="20,20,20,20"
                     Text="{Binding RepeatPassword}"

@@ -152,6 +152,15 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter your name.
+        /// </summary>
+        public static string NameRequired {
+            get {
+                return ResourceManager.GetString("NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New contact.
         /// </summary>
         public static string NewContact {
@@ -264,9 +273,16 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create your password
-        ///
-        ///Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
         ///Example: {0}
         ///
         ///Remember, we don&apos;t store it for your own security.
@@ -283,6 +299,15 @@ namespace Kriptal.Resources {
         public static string ShareContact {
             get {
                 return ResourceManager.GetString("ShareContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        public static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
             }
         }
         

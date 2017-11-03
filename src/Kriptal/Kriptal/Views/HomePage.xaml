@@ -24,6 +24,7 @@
                     <Button 
                         AutomationId="ShareButton" 
                         HorizontalOptions="Center"
+                        FontSize="Medium"
                         Text="{x:Static localization:AppResources.ShareContact}" 
                         Command="{Binding EnterCommand}"/>
                     <Button 

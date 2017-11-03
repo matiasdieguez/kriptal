@@ -197,6 +197,16 @@ namespace Kriptal.Data
         }
 
         /// <summary>
+        /// GetName
+        /// </summary>
+        public string GetName()
+        {
+            var key = DbInstance.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.MyName.ToString());
+            return key.Value;
+        }
+
+
+        /// <summary>
         /// GetMyPublicKey
         /// </summary>
         public string GetPublicKey()
@@ -212,6 +222,15 @@ namespace Kriptal.Data
         public void SavePrivateKey(string key)
         {
             Save(new DbControlModel { Key = DbControlKeys.MyPrivateKey.ToString(), Value = key });
+        }
+
+        /// <summary>
+        /// SaveName
+        /// </summary>
+        /// <param name="key">key</param>
+        public void SaveName(string name)
+        {
+            Save(new DbControlModel { Key = DbControlKeys.MyName.ToString(), Value = name });
         }
 
         /// <summary>

@@ -147,6 +147,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Enter your name</value>
+  </data>
   <data name="NewContact" xml:space="preserve">
     <value>New contact</value>
   </data>
@@ -187,16 +190,20 @@ This is for security reasons. Learn more in About tab or at kriptal.org</value>
   <data name="ScanContact" xml:space="preserve">
     <value>Scan QR of contact</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
   <data name="SetPassword" xml:space="preserve">
-    <value>Create your password
-
-Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
+    <value>Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
 Example: {0}
 
 Remember, we don't store it for your own security</value>
   </data>
   <data name="ShareContact" xml:space="preserve">
     <value>Send my contact</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Kriptal</value>

@@ -142,7 +142,7 @@
     <value>Mensaje</value>
   </data>
   <data name="MustBeStrongPassword" xml:space="preserve">
-    <value>La contraseña debe constar de mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 8</value>
+    <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 8 caracteres</value>
   </data>
   <data name="NewContact" xml:space="preserve">
     <value>Nuevo contacto</value>
@@ -181,16 +181,20 @@ Esto es por razones de seguridad. Ver mas sobre esto en Acerca de o en kriptal.o
   <data name="ScanContact" xml:space="preserve">
     <value>Escanear QR de contacto</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
   <data name="SetPassword" xml:space="preserve">
-    <value>Crea tu contraseña
-
-Debe constar de mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 8 caracteres
+    <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 8 caracteres
 Ejemplo: {0}
 
 Recuérdala, no la almacenamos por tu propia seguridad</value>
   </data>
   <data name="ShareContact" xml:space="preserve">
     <value>Enviar mi contacto</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Kriptal</value>

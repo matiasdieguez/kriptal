@@ -25,6 +25,13 @@ namespace Kriptal.ViewModels
             set => SetProperty(ref text, value);
         }
 
+        private string name = string.Empty;
+        public string Name
+        {
+            get => name;
+            set => SetProperty(ref name, value);
+        }
+
         private string password = string.Empty;
         public string Password
         {
@@ -105,6 +112,13 @@ namespace Kriptal.ViewModels
         {
             IsBusy = true;
 
+            if (IsNewAccount && (string.IsNullOrEmpty(Name) || string.IsNullOrWhiteSpace(Name)))
+            {
+                IsBusy = false;
+                await Application.Current.MainPage.DisplayAlert(AppResources.Title, AppResources.NameRequired, AppResources.OK);
+                return;
+            }
+
             if (IsNewAccount && Password != RepeatPassword)
             {
                 IsBusy = false;
@@ -140,6 +154,7 @@ namespace Kriptal.ViewModels
 
                     var rsa = new RsaCrypto();
                     var keys = await rsa.CreateKeyPair();
+                    localDataManager.SaveName(Name);
                     localDataManager.SavePrivateKey(keys.PrivateKey);
                     localDataManager.SavePublicKey(keys.PublicKey);
                 }
@@ -171,18 +186,24 @@ namespace Kriptal.ViewModels
                     new NavigationPage(new HomePage())
                     {
                         Icon = "home.png",
+#pragma warning disable CS0618 // Type or member is obsolete
                         Title = Device.OnPlatform(null, null, AppResources.Title)
+#pragma warning restore CS0618 // Type or member is obsolete
 
                     },
                     new NavigationPage(new UsersPage())
                     {
                         Icon = "contacts.png",
+#pragma warning disable CS0618 // Type or member is obsolete
                         Title = Device.OnPlatform(null, null, AppResources.Contacts)
+#pragma warning restore CS0618 // Type or member is obsolete
                     },
                     new NavigationPage(new AboutPage())
                     {
                         Icon = "about.png",
+#pragma warning disable CS0618 // Type or member is obsolete
                         Title = Device.OnPlatform(null, null, AppResources.About)
+#pragma warning restore CS0618 // Type or member is obsolete
                     },
                 }
             };

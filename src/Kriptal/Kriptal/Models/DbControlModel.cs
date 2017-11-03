@@ -39,7 +39,11 @@ namespace Kriptal.Models
         /// <summary>
         /// SaltBytes
         /// </summary>
-        SaltBytes
+        SaltBytes,
+        /// <summary>
+        /// MyName
+        /// </summary>
+        MyName
 
     }
 }

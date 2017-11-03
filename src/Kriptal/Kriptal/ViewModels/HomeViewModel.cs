@@ -2,8 +2,10 @@
 
 using Xamarin.Forms;
 using QRCoder;
+using Newtonsoft.Json;
 
 using Kriptal.Data;
+using Kriptal.Models;
 using Kriptal.Resources;
 
 namespace Kriptal.ViewModels
@@ -25,10 +27,11 @@ namespace Kriptal.ViewModels
 
         public void GenerateQr()
         {
-            var myPublicKey = new LocalDataManager(App.Password).GetPublicKey();
+            var localDataManager = new LocalDataManager(App.Password);
+            var qrJson = JsonConvert.SerializeObject(new UserItem { Name = localDataManager.GetName(), PublicKey = localDataManager.GetPublicKey() });
             using (var qrGenerator = new QRCodeGenerator())
             {
-                var qrCodeData = qrGenerator.CreateQrCode(myPublicKey, QRCodeGenerator.ECCLevel.Q);
+                var qrCodeData = qrGenerator.CreateQrCode(qrJson, QRCodeGenerator.ECCLevel.Q);
                 using (var qrCode = new PngByteQRCode(qrCodeData))
                 {
                     var qrCodeImage = qrCode.GetGraphic(20);
