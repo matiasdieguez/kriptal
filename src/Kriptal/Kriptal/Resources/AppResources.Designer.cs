@@ -62,7 +62,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to About Kriptal.
         /// </summary>
         public static string About {
             get {
@@ -71,7 +71,16 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contacts.
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Message.
         /// </summary>
         public static string Contacts {
             get {
@@ -80,11 +89,20 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Enter {
             get {
                 return ResourceManager.GetString("Enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action not completed.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -98,7 +116,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incorrect Password.
+        ///   Looks up a localized string similar to Incorrect password.
         /// </summary>
         public static string IncorrectPassword {
             get {
@@ -107,11 +125,38 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password must consist of uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8.
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8.
         /// </summary>
         public static string MustBeStrongPassword {
             get {
                 return ResourceManager.GetString("MustBeStrongPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New contact.
+        /// </summary>
+        public static string NewContact {
+            get {
+                return ResourceManager.GetString("NewContact", resourceCulture);
             }
         }
         
@@ -134,7 +179,83 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scan contact&apos;s QR.
+        ///   Looks up a localized string similar to Password field and repeat field must match.
+        /// </summary>
+        public static string PasswordDontMatch {
+            get {
+                return ResourceManager.GetString("PasswordDontMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public Key.
+        /// </summary>
+        public static string PublicKey {
+            get {
+                return ResourceManager.GetString("PublicKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask others to scan this QR code with Kriptal to add you as a contact.
+        /// </summary>
+        public static string QrScanInfo {
+            get {
+                return ResourceManager.GetString("QrScanInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat password.
+        /// </summary>
+        public static string RepeatPassword {
+            get {
+                return ResourceManager.GetString("RepeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset account.
+        /// </summary>
+        public static string ResetAccount {
+            get {
+                return ResourceManager.GetString("ResetAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your account has been reset.
+        /// </summary>
+        public static string ResetCompleted {
+            get {
+                return ResourceManager.GetString("ResetCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you don&apos;t remember your password, the only thing to do is a total reset of your account
+        ///
+        ///Your contacts list will be erased and you must send your new Kriptal Contact to all your contacts
+        ///
+        ///This is for security reasons. Learn more in About tab or at kriptal.org.
+        /// </summary>
+        public static string ResetMessage {
+            get {
+                return ResourceManager.GetString("ResetMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan QR of contact.
         /// </summary>
         public static string ScanContact {
             get {
@@ -143,7 +264,21 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Share my contact.
+        ///   Looks up a localized string similar to Create your password
+        ///
+        ///Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
+        ///Example: {0}
+        ///
+        ///Remember, we don&apos;t store it for your own security.
+        /// </summary>
+        public static string SetPassword {
+            get {
+                return ResourceManager.GetString("SetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send my contact.
         /// </summary>
         public static string ShareContact {
             get {

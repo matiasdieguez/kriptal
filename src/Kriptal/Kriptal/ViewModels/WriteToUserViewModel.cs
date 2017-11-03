@@ -1,4 +1,5 @@
 ﻿using Kriptal.Models;
+using Kriptal.Resources;
 
 namespace Kriptal.ViewModels
 {
@@ -7,15 +8,9 @@ namespace Kriptal.ViewModels
         public User User { get; set; }
         public WriteToUserViewModel(User user = null)
         {
-            Title = user.Name;
+            Title = AppResources.Contacts + " to " + user.Name;
             User = user;
         }
 
-        int quantity = 1;
-        public int Quantity
-        {
-            get { return quantity; }
-            set { SetProperty(ref quantity, value); }
-        }
     }
 }

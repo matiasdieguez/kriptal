@@ -118,22 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>About</value>
+    <value>About Kriptal</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
+    <value>New Message</value>
   </data>
   <data name="Enter" xml:space="preserve">
-    <value>Enter</value>
+    <value>Login</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Action not completed</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="IncorrectPassword" xml:space="preserve">
-    <value>Incorrect Password</value>
+    <value>Incorrect password</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
   </data>
   <data name="MustBeStrongPassword" xml:space="preserve">
-    <value>The password must consist of uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8</value>
+    <value>The password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewContact" xml:space="preserve">
+    <value>New contact</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
@@ -141,11 +156,47 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PasswordDontMatch" xml:space="preserve">
+    <value>Password field and repeat field must match</value>
+  </data>
+  <data name="PublicKey" xml:space="preserve">
+    <value>Public Key</value>
+  </data>
+  <data name="QrScanInfo" xml:space="preserve">
+    <value>Ask others to scan this QR code with Kriptal to add you as a contact</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="ResetAccount" xml:space="preserve">
+    <value>Reset account</value>
+  </data>
+  <data name="ResetCompleted" xml:space="preserve">
+    <value>Your account has been reset</value>
+  </data>
+  <data name="ResetMessage" xml:space="preserve">
+    <value>If you don't remember your password, the only thing to do is a total reset of your account
+
+Your contacts list will be erased and you must send your new Kriptal Contact to all your contacts
+
+This is for security reasons. Learn more in About tab or at kriptal.org</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="ScanContact" xml:space="preserve">
-    <value>Scan contact's QR</value>
+    <value>Scan QR of contact</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Create your password
+
+Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
+Example: {0}
+
+Remember, we don't store it for your own security</value>
   </data>
   <data name="ShareContact" xml:space="preserve">
-    <value>Share my contact</value>
+    <value>Send my contact</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Kriptal</value>

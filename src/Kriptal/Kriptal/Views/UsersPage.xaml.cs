@@ -22,11 +22,11 @@ namespace Kriptal.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as User;
+            var item = args.SelectedItem as UserItem;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new WriteToUserPage(new WriteToUserViewModel(item)));
+            await Navigation.PushAsync(new WriteToUserPage(new WriteToUserViewModel(new User { Id = item.Id, Name = item.Name, PublicKey = item.PublicKey })));
 
             // Manually deselect item
             UsersListView.SelectedItem = null;

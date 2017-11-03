@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:Kriptal.Resources"
              x:Class="Kriptal.Views.UsersPage"
               Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Item" Clicked="AddItem_Clicked" />
+        <ToolbarItem Text="{x:Static localization:AppResources.NewContact}" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="UsersListView"
-				ItemsSource="{Binding Items}"
+				ItemsSource="{Binding Users}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadUsersCommand}"
@@ -19,14 +20,9 @@
 				ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Name}"
-                       LineBreakMode="WordWrap"
-                       Style="{DynamicResource ListItemTextStyle}"
-                       FontSize="16"/>
-                            </StackLayout>
-                        </ViewCell>
+                        <ImageCell
+                            ImageSource="profile.png" 
+                            Text="{Binding Name}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

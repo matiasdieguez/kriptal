@@ -11,4 +11,14 @@ namespace Kriptal.Models
 
         public string PublicKey { get; set; }
     }
+
+    public class UserItem
+    {
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string PublicKey { get; set; }
+    }
+
 }

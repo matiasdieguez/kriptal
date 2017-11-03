@@ -2,23 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:Kriptal.Resources"
+             Title="{Binding Title}"
              x:Class="Kriptal.Views.HomePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Image
-                Source="qr.png"
-                WidthRequest="400"
-                HeightRequest="400"/>
-            <Button 
-                    AutomationId="Enter" 
+        <ScrollView>
+            <StackLayout>
+                <Label 
+                    Text="{x:Static localization:AppResources.QrScanInfo}"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
                     HorizontalOptions="Center"
-                    Text="{x:Static localization:AppResources.ShareContact}" 
-                    Command="{Binding EnterCommand}"/>
-            <Button 
-                    AutomationId="Enter" 
+                    VerticalOptions="Center"/>
+                <Image
                     HorizontalOptions="Center"
-                    Text="{x:Static localization:AppResources.ScanContact}" 
-                    Command="{Binding EnterCommand}"/>
-        </StackLayout>
+                    VerticalOptions="Center"
+                    Aspect="AspectFit"
+                    Source="{Binding QrCode}"
+                    WidthRequest="400"
+                    HeightRequest="400"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button 
+                        AutomationId="ShareButton" 
+                        HorizontalOptions="Center"
+                        Text="{x:Static localization:AppResources.ShareContact}" 
+                        Command="{Binding EnterCommand}"/>
+                    <Button 
+                        AutomationId="ScanButton" 
+                        HorizontalOptions="Center"
+                        FontSize="Medium"
+                        Text="{x:Static localization:AppResources.ScanContact}" 
+                        Command="{Binding EnterCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

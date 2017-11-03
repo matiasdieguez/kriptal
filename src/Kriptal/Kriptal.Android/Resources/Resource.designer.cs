@@ -2219,7 +2219,7 @@ namespace Kriptal.Droid
 			public const int notification_template_icon_bg = 2130837672;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int profile_generic = 2130837669;
+			public const int profile = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
 			public const int slideout = 2130837670;
