@@ -19,6 +19,8 @@
                     WidthRequest="400"
                     Margin="20,20,20,20"
                     Text="{Binding Name}"
+                    IsEnabled="{Binding IsNewAccount}"
+                    IsVisible="{Binding IsNewAccount}"
                     Placeholder="{x:Static localization:AppResources.Name}"/>
                 <Entry 
                     x:Name="Password" 

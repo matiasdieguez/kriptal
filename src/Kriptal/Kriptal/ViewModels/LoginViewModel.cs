@@ -154,6 +154,7 @@ namespace Kriptal.ViewModels
 
                     var rsa = new RsaCrypto();
                     var keys = await rsa.CreateKeyPair();
+                    localDataManager.SaveMyId(Guid.NewGuid().ToString());
                     localDataManager.SaveName(Name);
                     localDataManager.SavePrivateKey(keys.PrivateKey);
                     localDataManager.SavePublicKey(keys.PublicKey);

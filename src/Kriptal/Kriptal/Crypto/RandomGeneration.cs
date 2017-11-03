@@ -18,16 +18,16 @@ namespace Kriptal.Crypto
         public char Number => (char)_cryptoRandom.Next(48, 57);
         public char Symbol => (char)_cryptoRandom.Next(33, 47);
 
-        public string GetRandomPassword()
+        public string GetRandomPassword(int size = 8)
         {
-            var randomPassword = new char[8];
+            var randomPassword = new char[size];
 
             randomPassword[0] = LowercaseLetter;
             randomPassword[1] = UppercaseLetter;
             randomPassword[2] = Number;
             randomPassword[3] = Symbol;
 
-            for (int i = 4; i <= 7; i++)
+            for (int i = 4; i <= size - 1; i++)
             {
                 var randomSelection = _cryptoRandom.Next(0, 3);
                 switch (randomSelection)

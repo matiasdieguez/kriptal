@@ -7,6 +7,11 @@ using Newtonsoft.Json;
 using Kriptal.Data;
 using Kriptal.Models;
 using Kriptal.Resources;
+using System.Threading.Tasks;
+using Kriptal.Helpers;
+using System;
+using Plugin.Share;
+using Plugin.Share.Abstractions;
 
 namespace Kriptal.ViewModels
 {
@@ -19,6 +24,9 @@ namespace Kriptal.ViewModels
             set => SetProperty(ref qrCode, value);
         }
 
+        public Command ShareCommand => new Command(async () => await Share());
+        public Command ScanCommand => new Command(async () => await Scan());
+
         public HomeViewModel()
         {
             Title = AppResources.Title;
@@ -28,7 +36,13 @@ namespace Kriptal.ViewModels
         public void GenerateQr()
         {
             var localDataManager = new LocalDataManager(App.Password);
-            var qrJson = JsonConvert.SerializeObject(new UserItem { Name = localDataManager.GetName(), PublicKey = localDataManager.GetPublicKey() });
+            var qrJson = JsonConvert.SerializeObject(new UserItem
+            {
+                Id = localDataManager.GetMyId(),
+                Name = localDataManager.GetName(),
+                PublicKey = localDataManager.GetPublicKey()
+            });
+
             using (var qrGenerator = new QRCodeGenerator())
             {
                 var qrCodeData = qrGenerator.CreateQrCode(qrJson, QRCodeGenerator.ECCLevel.Q);
@@ -38,6 +52,19 @@ namespace Kriptal.ViewModels
                     QrCode = ImageSource.FromStream(() => new MemoryStream(qrCodeImage));
                 }
             }
+        }
+
+        async Task Share()
+        {
+            var localDataManager = new LocalDataManager(App.Password);
+            var userItem = new UserItem { Id = localDataManager.GetMyId(), Name = localDataManager.GetName(), PublicKey = localDataManager.GetPublicKey() };
+            var text = UriMessage.KriptalContactUri + Uri.EscapeDataString(JsonConvert.SerializeObject(userItem));
+            await CrossShare.Current.Share(new ShareMessage { Title = AppResources.ContactFromKriptal, Text = text });
+        }
+
+        async Task Scan()
+        {
+            await Share();
         }
     }
 }

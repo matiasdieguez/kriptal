@@ -4,11 +4,15 @@
              xmlns:localization="clr-namespace:Kriptal.Resources"
              x:Class="Kriptal.Views.WriteToUserPage"
              Title="{Binding Title}">
-    <ScrollView>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="{x:Static localization:AppResources.Name}" FontSize="Small"/>
-            <Editor Text="{Binding Text}"/>
-            <Button Text="Send"/>
-        </StackLayout>
-    </ScrollView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static localization:AppResources.Send}" Command="{Binding SendCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="{x:Static localization:AppResources.Text}" FontSize="Small"/>
+                <Editor Text="{Binding Text}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

@@ -63,3 +63,4 @@ https://github.com/onovotny/bc-csharp/blob/netstandard/crypto/test/src/openpgp/t
 
 Enviar Email con attachments utilizando Xam.Plugins.Messaging
 https://github.com/cjlotz/Xamarin.Plugins/blob/master/Messaging/Details.md
+

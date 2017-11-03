@@ -26,13 +26,13 @@
                         HorizontalOptions="Center"
                         FontSize="Medium"
                         Text="{x:Static localization:AppResources.ShareContact}" 
-                        Command="{Binding EnterCommand}"/>
+                        Command="{Binding ShareCommand}"/>
                     <Button 
                         AutomationId="ScanButton" 
                         HorizontalOptions="Center"
                         FontSize="Medium"
                         Text="{x:Static localization:AppResources.ScanContact}" 
-                        Command="{Binding EnterCommand}"/>
+                        Command="{Binding ScanCommand}"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

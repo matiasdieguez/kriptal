@@ -80,6 +80,15 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New contact from Kriptal.
+        /// </summary>
+        public static string ContactFromKriptal {
+            get {
+                return ResourceManager.GetString("ContactFromKriptal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Message.
         /// </summary>
         public static string Contacts {
@@ -103,6 +112,15 @@ namespace Kriptal.Resources {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You got a message in Kriptal.
+        /// </summary>
+        public static string FromTitle {
+            get {
+                return ResourceManager.GetString("FromTitle", resourceCulture);
             }
         }
         
