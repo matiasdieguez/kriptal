@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:localization="clr-namespace:Kriptal.Resources"
+    x:Class="Kriptal.Views.ReadPage"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <StackLayout Orientation="Horizontal">
+                <Label 
+                    Text="{x:Static localization:AppResources.MessageFrom}" 
+                    FontSize="Medium" />
+                <Label 
+                    Text="{Binding UserName}" 
+                    FontSize="Medium" />
+            </StackLayout>
+            <Label 
+                Text="{Binding MessageText}" FontSize="Medium" />
+            <Button 
+                    AutomationId="OK" 
+                    HorizontalOptions="Center"
+                    Text="{x:Static localization:AppResources.OK}" 
+                    Command="{Binding OkCommand}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

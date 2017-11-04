@@ -28,7 +28,7 @@ namespace Kriptal
                 if (UriData.Contains(UriMessage.KriptalContactUri))
                     Current.MainPage = new NewUserPage();
                 if (UriData.Contains(UriMessage.KriptalMessageUri))
-                    Current.MainPage = new NewUserPage();//new ReadMessagePage();
+                    Current.MainPage = new ReadPage();
             }
             else
             {

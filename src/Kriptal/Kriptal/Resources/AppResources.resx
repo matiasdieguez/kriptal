@@ -150,6 +150,9 @@
   <data name="Message" xml:space="preserve">
     <value>Message</value>
   </data>
+  <data name="MessageFrom" xml:space="preserve">
+    <value>Message from </value>
+  </data>
   <data name="MustBeStrongPassword" xml:space="preserve">
     <value>The password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8</value>
   </data>
@@ -216,5 +219,8 @@ Remember, we don't store it for your own security</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Kriptal</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value> to </value>
   </data>
 </root>

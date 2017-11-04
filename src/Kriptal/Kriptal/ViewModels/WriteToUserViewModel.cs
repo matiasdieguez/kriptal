@@ -29,7 +29,7 @@ namespace Kriptal.ViewModels
 
         public WriteToUserViewModel(User user = null)
         {
-            Title = AppResources.Contacts + " to " + user.Name;
+            Title = AppResources.Contacts + AppResources.To + user.Name;
             User = user;
         }
 
