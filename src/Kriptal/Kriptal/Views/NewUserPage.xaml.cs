@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 using Kriptal.Models;
 using Kriptal.Data;
 using Kriptal.Resources;
+using Newtonsoft.Json;
 
 namespace Kriptal.Views
 {
@@ -21,12 +22,17 @@ namespace Kriptal.Views
         {
             InitializeComponent();
 
+            var json = Uri.UnescapeDataString(new Uri(App.UriData).Query.Replace("?data=", string.Empty));
+            var user = JsonConvert.DeserializeObject<UserItem>(json);
+
             User = new User
             {
-                Name = "",
-                PublicKey = "",
-                Id = Guid.NewGuid().ToString()
+                Name = user.Name,
+                PublicKey = user.PublicKey,
+                Id = user.Id
             };
+
+            App.UriData = string.Empty;
 
             BindingContext = this;
         }
@@ -44,7 +50,8 @@ namespace Kriptal.Views
                 await DisplayAlert(AppResources.Title, AppResources.Error, AppResources.OK);
             }
 
-            await Navigation.PopToRootAsync();
+            //await Navigation.PopToRootAsync();
+            App.SetMainPage();
         }
     }
 }

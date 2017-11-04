@@ -178,36 +178,9 @@ namespace Kriptal.ViewModels
                 await Application.Current.MainPage.DisplayAlert(AppResources.Title, AppResources.IncorrectPassword, AppResources.OK);
                 return;
             }
+
+            App.SetMainPage();
             IsBusy = false;
-
-            Application.Current.MainPage = new TabbedPage
-            {
-                Children =
-                {
-                    new NavigationPage(new HomePage())
-                    {
-                        Icon = "home.png",
-#pragma warning disable CS0618 // Type or member is obsolete
-                        Title = Device.OnPlatform(null, null, AppResources.Title)
-#pragma warning restore CS0618 // Type or member is obsolete
-
-                    },
-                    new NavigationPage(new UsersPage())
-                    {
-                        Icon = "contacts.png",
-#pragma warning disable CS0618 // Type or member is obsolete
-                        Title = Device.OnPlatform(null, null, AppResources.Contacts)
-#pragma warning restore CS0618 // Type or member is obsolete
-                    },
-                    new NavigationPage(new AboutPage())
-                    {
-                        Icon = "about.png",
-#pragma warning disable CS0618 // Type or member is obsolete
-                        Title = Device.OnPlatform(null, null, AppResources.About)
-#pragma warning restore CS0618 // Type or member is obsolete
-                    },
-                }
-            };
         }
     }
 }

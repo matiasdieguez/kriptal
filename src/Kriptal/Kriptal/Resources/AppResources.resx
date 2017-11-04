@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>About Kriptal</value>
   </data>
+  <data name="AddContact" xml:space="preserve">
+    <value>Add contact</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -127,7 +130,7 @@
     <value>New contact from Kriptal</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>New Message</value>
+    <value>New message</value>
   </data>
   <data name="Enter" xml:space="preserve">
     <value>Login</value>
@@ -172,7 +175,7 @@
     <value>Public Key</value>
   </data>
   <data name="QrScanInfo" xml:space="preserve">
-    <value>Ask others to scan this QR code with Kriptal to add you as a contact</value>
+    <value>Ask others users to scan this QR code with Kriptal to add you as a contact</value>
   </data>
   <data name="RepeatPassword" xml:space="preserve">
     <value>Repeat password</value>

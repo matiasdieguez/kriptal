@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>Acerca de</value>
   </data>
+  <data name="AddContact" xml:space="preserve">
+    <value>Agregar contacto</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -127,7 +130,7 @@
     <value>Nuevo contacto de Kriptal</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contactos</value>
+    <value>Nuevo mensaje</value>
   </data>
   <data name="Enter" xml:space="preserve">
     <value>Ingresar</value>
@@ -150,6 +153,9 @@
   <data name="MustBeStrongPassword" xml:space="preserve">
     <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 8 caracteres</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="NewContact" xml:space="preserve">
     <value>Nuevo contacto</value>
   </data>
@@ -162,8 +168,11 @@
   <data name="PasswordDontMatch" xml:space="preserve">
     <value>La contraseña y la repetición de la contraseña deben coincidir</value>
   </data>
+  <data name="PublicKey" xml:space="preserve">
+    <value>Clave pública</value>
+  </data>
   <data name="QrScanInfo" xml:space="preserve">
-    <value>Pida a otros que escaneen este código QR con Kriptal para agregar su contacto</value>
+    <value>Pide a otros usuarios que escaneen este código QR con Kriptal para agregar tu contacto</value>
   </data>
   <data name="RepeatPassword" xml:space="preserve">
     <value>Repetir contraseña</value>

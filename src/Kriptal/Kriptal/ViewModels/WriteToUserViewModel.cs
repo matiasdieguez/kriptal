@@ -46,18 +46,18 @@ namespace Kriptal.ViewModels
             var rsa = new RsaCrypto();
 
             var randomGenerator = new RandomGeneration();
-            var aesKey = sha.DeriveShaKey(randomGenerator.GetRandomPassword(64), 512).Digest;
+            var aesKey = sha.DeriveShaKey(randomGenerator.GetRandomPassword(64), 16).Digest;
             var aesResult = aes.Encrypt(Text, aesKey);
 
             kriptalMsg.Data = aesResult.EncryptedText;
 
             kriptalMsg.FromId = rsa.EncryptWithPublic(localDataManager.GetMyId(), User.PublicKey);
-            kriptalMsg.Signature = rsa.EncryptWithPrivate(kriptalMsg.FromId, localDataManager.GetPrivateKey());
+            //kriptalMsg.Signature = rsa.EncryptWithPrivate(kriptalMsg.FromId, localDataManager.GetPrivateKey());
             kriptalMsg.AesKey = rsa.EncryptWithPublic(aesKey, User.PublicKey);
             kriptalMsg.AesIv = rsa.EncryptWithPublic(Convert.ToBase64String(aesResult.Iv), User.PublicKey);
 
             var text = UriMessage.KriptalMessageUri + Uri.EscapeDataString(JsonConvert.SerializeObject(kriptalMsg));
-            await CrossShare.Current.Share(new ShareMessage { Title = AppResources.FromTitle, Text = text });
+            await CrossShare.Current.Share(new ShareMessage { Title = AppResources.FromTitle, Url = text });
 
             IsBusy = false;
         }

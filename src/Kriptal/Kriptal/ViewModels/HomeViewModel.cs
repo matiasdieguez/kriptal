@@ -59,7 +59,11 @@ namespace Kriptal.ViewModels
             var localDataManager = new LocalDataManager(App.Password);
             var userItem = new UserItem { Id = localDataManager.GetMyId(), Name = localDataManager.GetName(), PublicKey = localDataManager.GetPublicKey() };
             var text = UriMessage.KriptalContactUri + Uri.EscapeDataString(JsonConvert.SerializeObject(userItem));
-            await CrossShare.Current.Share(new ShareMessage { Title = AppResources.ContactFromKriptal, Text = text });
+            await CrossShare.Current.Share(new ShareMessage
+            {
+                Title = AppResources.ContactFromKriptal,
+                Url = text
+            });
         }
 
         async Task Scan()

@@ -5,15 +5,20 @@
     xmlns:localization="clr-namespace:Kriptal.Resources"
     x:Class="Kriptal.Views.NewUserPage"
     Title="{Binding Title}">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static localization:AppResources.Save}" Command="{Binding SaveCommand}" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="{x:Static localization:AppResources.Name}" FontSize="Medium" />
             <Entry Text="{Binding User.Name}" FontSize="Small" />
             <Label Text="{x:Static localization:AppResources.PublicKey}" FontSize="Medium" />
-            <Editor Text="{Binding User.PublicKey}" FontSize="Small" Margin="0" />
+            <Editor 
+                Text="{Binding User.PublicKey}" 
+                FontSize="Small" />
+            <Button 
+                    AutomationId="Save" 
+                    HorizontalOptions="Center"
+                    Text="{x:Static localization:AppResources.AddContact}" 
+                    Command="{Binding SaveCommand}"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

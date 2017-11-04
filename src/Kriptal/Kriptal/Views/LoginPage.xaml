@@ -33,15 +33,6 @@
                     Text="{Binding Password}"
                     IsPassword="True" 
                     Placeholder="{x:Static localization:AppResources.Password}"/>
-                <Label 
-                    FontSize="Small"
-                    WidthRequest="400"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    IsEnabled="{Binding IsNewAccount}"
-                    IsVisible="{Binding IsNewAccount}"
-                    Text="{Binding PasswordInfo}"
-                    />
                 <Entry 
                     x:Name="RepeatPassword" 
                     HorizontalOptions="Center"
@@ -55,6 +46,14 @@
                     IsEnabled="{Binding IsNewAccount}"
                     IsVisible="{Binding IsNewAccount}"
                     Placeholder="{x:Static localization:AppResources.RepeatPassword}"/>
+                <Label 
+                    FontSize="Small"
+                    WidthRequest="400"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    IsEnabled="{Binding IsNewAccount}"
+                    IsVisible="{Binding IsNewAccount}"
+                    Text="{Binding PasswordInfo}"/>
                 <Button 
                     AutomationId="Enter" 
                     HorizontalOptions="Center"

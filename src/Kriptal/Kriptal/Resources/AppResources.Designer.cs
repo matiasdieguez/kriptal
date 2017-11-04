@@ -71,6 +71,15 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add contact.
+        /// </summary>
+        public static string AddContact {
+            get {
+                return ResourceManager.GetString("AddContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -89,7 +98,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Message.
+        ///   Looks up a localized string similar to New message.
         /// </summary>
         public static string Contacts {
             get {
@@ -224,7 +233,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ask others to scan this QR code with Kriptal to add you as a contact.
+        ///   Looks up a localized string similar to Ask others users to scan this QR code with Kriptal to add you as a contact.
         /// </summary>
         public static string QrScanInfo {
             get {

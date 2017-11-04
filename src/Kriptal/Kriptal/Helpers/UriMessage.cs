@@ -8,7 +8,7 @@ namespace Kriptal.Helpers
 {
     public class UriMessage
     {
-        public const string KriptalMessageUri = "kriptal://message?data=";
-        public const string KriptalContactUri = "kriptal://contact?data=";
+        public const string KriptalMessageUri = "http://kriptal.org/message?data=";
+        public const string KriptalContactUri = "http://kriptal.org/contact?data=";
     }
 }
