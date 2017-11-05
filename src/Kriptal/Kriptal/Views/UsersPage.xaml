@@ -4,9 +4,6 @@
              xmlns:localization="clr-namespace:Kriptal.Resources"
              x:Class="Kriptal.Views.UsersPage"
               Title="{Binding Title}">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static localization:AppResources.NewContact}" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="UsersListView"

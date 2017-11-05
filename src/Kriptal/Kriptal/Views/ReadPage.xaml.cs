@@ -32,8 +32,6 @@ namespace Kriptal.Views
             set => userName = value;
         }
 
-
-
         public ReadPage()
         {
             InitializeComponent();
@@ -41,7 +39,6 @@ namespace Kriptal.Views
             var json = Uri.UnescapeDataString(new Uri(App.UriData).Query.Replace("?data=", string.Empty));
             var message = JsonConvert.DeserializeObject<KriptalMessage>(json);
 
-            var sha = new ShaHash();
             var aes = new AesCrypto();
             var rsa = new RsaCrypto();
 

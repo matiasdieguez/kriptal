@@ -7,20 +7,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label 
-                    Text="{x:Static localization:AppResources.QrScanInfo}"
-                    FontSize="Medium"
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
-                <Image
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Aspect="AspectFit"
-                    Source="{Binding QrCode}"
-                    WidthRequest="400"
-                    HeightRequest="400"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                     <Button 
                         AutomationId="ShareButton" 
                         HorizontalOptions="Center"
@@ -34,6 +21,19 @@
                         Text="{x:Static localization:AppResources.ScanContact}" 
                         Command="{Binding ScanCommand}"/>
                 </StackLayout>
+                <Label 
+                    Text="{x:Static localization:AppResources.QrScanInfo}"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Image
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Aspect="AspectFit"
+                    Source="{Binding QrCode}"
+                    WidthRequest="300"
+                    HeightRequest="300"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
