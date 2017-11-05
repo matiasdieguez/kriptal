@@ -15,5 +15,10 @@ namespace Kriptal.Views
             InitializeComponent();
             BindingContext = _viewModel = new HomeViewModel();
         }
+
+        private async void Button_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new ScanContactPage());
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Kriptal.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             var uriData = Intent?.Data?.ToString();
 
@@ -28,6 +29,11 @@ namespace Kriptal.Droid
             LoadApplication(app);
 
 
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            ZXing.Net.Mobile.Forms.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

@@ -19,7 +19,7 @@
                         HorizontalOptions="Center"
                         FontSize="Medium"
                         Text="{x:Static localization:AppResources.ScanContact}" 
-                        Command="{Binding ScanCommand}"/>
+                        Clicked="Button_Clicked"/>
                 </StackLayout>
                 <Label 
                     Text="{x:Static localization:AppResources.QrScanInfo}"

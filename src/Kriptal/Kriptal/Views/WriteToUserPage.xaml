@@ -11,7 +11,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="{x:Static localization:AppResources.Text}" FontSize="Small"/>
-                <Editor Text="{Binding Text}"/>
+                <Editor Text="{Binding Text}" HeightRequest="300"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

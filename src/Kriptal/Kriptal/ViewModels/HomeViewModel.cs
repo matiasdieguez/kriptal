@@ -12,6 +12,7 @@ using Kriptal.Helpers;
 using System;
 using Plugin.Share;
 using Plugin.Share.Abstractions;
+using Kriptal.Views;
 
 namespace Kriptal.ViewModels
 {
@@ -68,7 +69,7 @@ namespace Kriptal.ViewModels
 
         async Task Scan()
         {
-            await Share();
+            await App.Current.MainPage.Navigation.PushAsync(new ScanContactPage());
         }
     }
 }
