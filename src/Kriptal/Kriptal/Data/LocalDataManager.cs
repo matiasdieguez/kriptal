@@ -251,6 +251,24 @@ namespace Kriptal.Data
         }
 
         /// <summary>
+        /// SaveEmail
+        /// </summary>
+        /// <param name="email">email</param>
+        public void SaveEmail(string email)
+        {
+            Save(new DbControlModel { Key = DbControlKeys.Email.ToString(), Value = email });
+        }
+
+        /// <summary>
+        /// GetEmail
+        /// </summary>
+        public string GetEmail()
+        {
+            var key = DbInstance.All<DbControlModel>().SingleOrDefault(x => x.Key == DbControlKeys.Email.ToString());
+            return key.Value;
+        }
+
+        /// <summary>
         /// GetPrivateKey
         /// </summary>
         public string GetPrivateKey()

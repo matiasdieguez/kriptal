@@ -26,7 +26,13 @@ namespace Kriptal.ViewModels
             MessagingCenter.Subscribe<NewUserPage, User>(this, "AddItem", (obj, item) =>
             {
                 var _item = item as User;
-                Users.Add(new UserItem { Id = _item.Id, Name = _item.Name, PublicKey = _item.PublicKey });
+                Users.Add(new UserItem
+                {
+                    Id = _item.Id,
+                    Name = _item.Name,
+                    PublicKey = _item.PublicKey,
+                    Email = _item.Email
+                });
             });
         }
 
@@ -44,7 +50,13 @@ namespace Kriptal.ViewModels
                 await Task.Run(() =>
                 {
                     var users = new LocalDataManager(App.Password).List<User>();
-                    var items = users.Select(i => new UserItem { Id = i.Id, Name = i.Name, PublicKey = i.PublicKey });
+                    var items = users.Select(i => new UserItem
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        PublicKey = i.PublicKey,
+                        Email = i.Email
+                    });
                     Users.ReplaceRange(items);
                 });
             }

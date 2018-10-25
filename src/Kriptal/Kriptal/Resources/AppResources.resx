@@ -123,14 +123,26 @@
   <data name="AddContact" xml:space="preserve">
     <value>Add contact</value>
   </data>
+  <data name="AttachedFile" xml:space="preserve">
+    <value>Attachment:</value>
+  </data>
+  <data name="AttachFile" xml:space="preserve">
+    <value>Attach File</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="ContactFromKriptal" xml:space="preserve">
-    <value>New contact from Kriptal</value>
+    <value>New contact in Kriptal</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>New message</value>
+    <value>New Kriptal message</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Enter your email</value>
   </data>
   <data name="Enter" xml:space="preserve">
     <value>Login</value>
@@ -148,13 +160,13 @@
     <value>Incorrect password</value>
   </data>
   <data name="Message" xml:space="preserve">
-    <value>Message</value>
+    <value>Message:</value>
   </data>
   <data name="MessageFrom" xml:space="preserve">
     <value>Message from </value>
   </data>
   <data name="MustBeStrongPassword" xml:space="preserve">
-    <value>The password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8</value>
+    <value>The password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 10</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -206,10 +218,10 @@ This is for security reasons. Learn more in About tab or at kriptal.org</value>
     <value>Send</value>
   </data>
   <data name="SetPassword" xml:space="preserve">
-    <value>Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
+    <value>Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 10 characters
 Example: {0}
 
-Remember, we don't store it for your own security</value>
+If you forget this password, your data and messages are lost</value>
   </data>
   <data name="ShareContact" xml:space="preserve">
     <value>Send my contact</value>

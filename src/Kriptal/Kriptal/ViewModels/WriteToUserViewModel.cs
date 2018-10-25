@@ -11,6 +11,8 @@ using Kriptal.Crypto;
 using Kriptal.Models;
 using Kriptal.Helpers;
 using Kriptal.Resources;
+using Kriptal.Services;
+using Plugin.FilePicker;
 
 namespace Kriptal.ViewModels
 {
@@ -18,19 +20,39 @@ namespace Kriptal.ViewModels
     {
         public User User { get; set; }
 
-        private string text = string.Empty;
+        private string _text = string.Empty;
         public string Text
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => _text;
+            set => SetProperty(ref _text, value);
+        }
+
+        private string _fileName = string.Empty;
+        public string FileName
+        {
+            get => _fileName;
+            set => SetProperty(ref _fileName, value);
         }
 
         public Command SendCommand => new Command(async () => await Send());
+        public Command AttachFileCommand => new Command(async () => await AttachFile());
 
         public WriteToUserViewModel(User user = null)
         {
             Title = AppResources.Contacts + AppResources.To + user.Name;
             User = user;
+        }
+
+        async Task AttachFile()
+        {
+            var file = await CrossFilePicker.Current.PickFile();
+
+            if (file != null)
+            {
+                FileName = file.FileName;
+            }
+            else
+                FileName = string.Empty;
         }
 
         async Task Send()
@@ -57,7 +79,13 @@ namespace Kriptal.ViewModels
             kriptalMsg.AesIv = rsa.EncryptWithPublic(Convert.ToBase64String(aesResult.Iv), User.PublicKey);
 
             var text = UriMessage.KriptalMessageUri + Uri.EscapeDataString(JsonConvert.SerializeObject(kriptalMsg));
-            await CrossShare.Current.Share(new ShareMessage { Title = AppResources.FromTitle, Url = text });
+            //await CrossShare.Current.Share(new ShareMessage { Title = AppResources.FromTitle, Url = text });
+            var sender = DependencyService.Get<ISender>();
+
+            if (FileName != string.Empty)
+                sender.Send(text, User.Email, FileName);
+            else
+                sender.Send(text, User.Email);
 
             IsBusy = false;
         }

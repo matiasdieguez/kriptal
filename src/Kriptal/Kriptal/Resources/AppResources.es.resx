@@ -118,19 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Acerca de</value>
+    <value>Acerca de Kriptal</value>
   </data>
   <data name="AddContact" xml:space="preserve">
     <value>Agregar contacto</value>
+  </data>
+  <data name="AttachedFile" xml:space="preserve">
+    <value>Adjunto:</value>
+  </data>
+  <data name="AttachFile" xml:space="preserve">
+    <value>Adjuntar archivo</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="ContactFromKriptal" xml:space="preserve">
-    <value>Nuevo contacto de Kriptal</value>
+    <value>Nuevo contacto en Kriptal</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Nuevo mensaje</value>
+    <value>Nuevo mensaje en Kriptal</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Ingrese su email</value>
   </data>
   <data name="Enter" xml:space="preserve">
     <value>Ingresar</value>
@@ -154,10 +166,13 @@
     <value>Mensaje de </value>
   </data>
   <data name="MustBeStrongPassword" xml:space="preserve">
-    <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 8 caracteres</value>
+    <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 10 caracteres</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Ingrese su nombre</value>
   </data>
   <data name="NewContact" xml:space="preserve">
     <value>Nuevo contacto</value>
@@ -203,10 +218,10 @@ Esto es por razones de seguridad. Ver mas sobre esto en Acerca de o en kriptal.o
     <value>Enviar</value>
   </data>
   <data name="SetPassword" xml:space="preserve">
-    <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 8 caracteres
+    <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 10 caracteres
 Ejemplo: {0}
 
-Recuérdala, no la almacenamos por tu propia seguridad</value>
+Si olvidas esta contraseña, se pierden todos los datos y mensajes de la cuenta</value>
   </data>
   <data name="ShareContact" xml:space="preserve">
     <value>Enviar mi contacto</value>

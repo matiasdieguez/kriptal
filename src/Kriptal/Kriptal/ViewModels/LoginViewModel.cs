@@ -18,44 +18,50 @@ namespace Kriptal.ViewModels
 
         public Command ResetCommand => new Command(async () => await Reset());
 
-        private string text = string.Empty;
+        private string _text = string.Empty;
         public string Text
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => _text;
+            set => SetProperty(ref _text, value);
         }
 
-        private string name = string.Empty;
+        private string _name = string.Empty;
         public string Name
         {
-            get => name;
-            set => SetProperty(ref name, value);
+            get => _name;
+            set => SetProperty(ref _name, value);
+        }
+        private string _email = string.Empty;
+        public string Email
+        {
+            get => _email;
+            set => SetProperty(ref _email, value);
         }
 
-        private string password = string.Empty;
+        private string _password = string.Empty;
         public string Password
         {
-            get => password;
-            set => SetProperty(ref password, value);
+            get => _password;
+            set => SetProperty(ref _password, value);
         }
 
-        private string repeatPassword = string.Empty;
+        private string _repeatPassword = string.Empty;
         public string RepeatPassword
         {
-            get => repeatPassword;
-            set => SetProperty(ref repeatPassword, value);
+            get => _repeatPassword;
+            set => SetProperty(ref _repeatPassword, value);
         }
 
-        private bool isNewAccount;
+        private bool _isNewAccount;
         public bool IsNewAccount
         {
-            get => isNewAccount;
-            set => SetProperty(ref isNewAccount, value);
+            get => _isNewAccount;
+            set => SetProperty(ref _isNewAccount, value);
         }
 
         public bool NotForNewAccount
         {
-            get => !isNewAccount;
+            get => !_isNewAccount;
         }
 
         public string PasswordInfo { get { return string.Format(AppResources.SetPassword, GetSamplePassword()); } }
@@ -85,7 +91,7 @@ namespace Kriptal.ViewModels
 
             var array = password.ToCharArray();
 
-            if (array.Length >= 8 &&
+            if (array.Length >= 10 &&
                 array.Any(char.IsLetter) &&
                 array.Any(char.IsUpper) &&
                 array.Any(char.IsLower) &&
@@ -156,6 +162,7 @@ namespace Kriptal.ViewModels
                     var keys = await rsa.CreateKeyPair();
                     localDataManager.SaveMyId(Guid.NewGuid().ToString());
                     localDataManager.SaveName(Name);
+                    localDataManager.SaveEmail(Email);
                     localDataManager.SavePrivateKey(keys.PrivateKey);
                     localDataManager.SavePublicKey(keys.PublicKey);
                 }

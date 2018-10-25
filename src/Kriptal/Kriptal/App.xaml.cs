@@ -1,6 +1,7 @@
 ﻿using Kriptal.Helpers;
 using Kriptal.Resources;
 using Kriptal.Views;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,9 +21,21 @@ namespace Kriptal
             SetMainPage();
         }
 
-#pragma warning disable CS0618 // Type or member is obsolete
         public static void SetMainPage()
         {
+            var home = string.Empty;
+            var contacts = string.Empty;
+            var about = string.Empty;
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Windows:
+                case Device.WinPhone:
+                    home = AppResources.Title;
+                    contacts = AppResources.Contacts;
+                    about = AppResources.About;
+                    break;
+            }
+
             if (!string.IsNullOrEmpty(UriData) && Password != null)
             {
                 if (UriData.Contains(UriMessage.KriptalContactUri))
@@ -42,23 +55,21 @@ namespace Kriptal
                             new NavigationPage(new HomePage())
                             {
                                 Icon = "home.png",
-                                Title = Device.OnPlatform(null, null, AppResources.Title)
-
+                                Title = home
                             },
                             new NavigationPage(new UsersPage())
                             {
                                 Icon = "contacts.png",
-                                Title = Device.OnPlatform(null, null, AppResources.Contacts)
+                                Title = contacts
                             },
                             new NavigationPage(new AboutPage())
                             {
                                 Icon = "about.png",
-                                Title = Device.OnPlatform(null, null, AppResources.About)
+                                Title = about
                             },
                         }
                     };
             }
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

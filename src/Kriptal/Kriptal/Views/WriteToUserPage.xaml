@@ -10,6 +10,11 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{x:Static localization:AppResources.AttachedFile}" FontSize="Small"/>
+                    <Label Text="{Binding FileName}" FontSize="Small"/>
+                </StackLayout>
+                <Button Text="{x:Static localization:AppResources.AttachFile}" Command="{Binding AttachFileCommand}"/>
                 <Label Text="{x:Static localization:AppResources.Text}" FontSize="Small"/>
                 <Editor Text="{Binding Text}" HeightRequest="300"/>
             </StackLayout>

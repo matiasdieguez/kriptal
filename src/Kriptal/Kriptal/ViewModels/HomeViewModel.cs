@@ -18,11 +18,11 @@ namespace Kriptal.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        private ImageSource qrCode = null;
+        private ImageSource _qrCode = null;
         public ImageSource QrCode
         {
-            get => qrCode;
-            set => SetProperty(ref qrCode, value);
+            get => _qrCode;
+            set => SetProperty(ref _qrCode, value);
         }
 
         public Command ShareCommand => new Command(async () => await Share());
@@ -58,7 +58,14 @@ namespace Kriptal.ViewModels
         async Task Share()
         {
             var localDataManager = new LocalDataManager(App.Password);
-            var userItem = new UserItem { Id = localDataManager.GetMyId(), Name = localDataManager.GetName(), PublicKey = localDataManager.GetPublicKey() };
+            var userItem = new UserItem
+            {
+                Id = localDataManager.GetMyId(),
+                Name = localDataManager.GetName(),
+                PublicKey = localDataManager.GetPublicKey(),
+                Email = localDataManager.GetEmail()
+            };
+
             var text = UriMessage.KriptalContactUri + Uri.EscapeDataString(JsonConvert.SerializeObject(userItem));
             await CrossShare.Current.Share(new ShareMessage
             {

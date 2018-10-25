@@ -47,7 +47,11 @@ namespace Kriptal.Models
         /// <summary>
         /// MyId
         /// </summary>
-        MyId
+        MyId,
+        /// <summary>
+        /// Email
+        /// </summary>
+        Email
 
     }
 }

@@ -22,6 +22,18 @@
                     IsEnabled="{Binding IsNewAccount}"
                     IsVisible="{Binding IsNewAccount}"
                     Placeholder="{x:Static localization:AppResources.Name}"/>
+                <Entry
+                    Keyboard="Email"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    AutomationId="Email" 
+                    FontSize="Medium"
+                    WidthRequest="400"
+                    Margin="20,20,20,20"
+                    Text="{Binding Email}"
+                    IsEnabled="{Binding IsNewAccount}"
+                    IsVisible="{Binding IsNewAccount}"
+                    Placeholder="{x:Static localization:AppResources.Email}"/>
                 <Entry 
                     x:Name="Password" 
                     HorizontalOptions="Center"

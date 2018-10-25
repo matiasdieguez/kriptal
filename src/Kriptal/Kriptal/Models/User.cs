@@ -10,6 +10,7 @@ namespace Kriptal.Models
         public string Name { get; set; }
 
         public string PublicKey { get; set; }
+        public string Email { get; set; }
     }
 
     public class UserItem
@@ -19,6 +20,7 @@ namespace Kriptal.Models
         public string Name { get; set; }
 
         public string PublicKey { get; set; }
+        public string Email { get; set; }
     }
 
 }

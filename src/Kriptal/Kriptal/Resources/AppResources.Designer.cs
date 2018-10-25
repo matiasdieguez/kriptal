@@ -80,6 +80,24 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachment:.
+        /// </summary>
+        public static string AttachedFile {
+            get {
+                return ResourceManager.GetString("AttachedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attach File.
+        /// </summary>
+        public static string AttachFile {
+            get {
+                return ResourceManager.GetString("AttachFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -89,7 +107,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New contact from Kriptal.
+        ///   Looks up a localized string similar to New contact in Kriptal.
         /// </summary>
         public static string ContactFromKriptal {
             get {
@@ -98,11 +116,29 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New message.
+        ///   Looks up a localized string similar to New Kriptal message.
         /// </summary>
         public static string Contacts {
             get {
                 return ResourceManager.GetString("Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your email.
+        /// </summary>
+        public static string EmailRequired {
+            get {
+                return ResourceManager.GetString("EmailRequired", resourceCulture);
             }
         }
         
@@ -152,7 +188,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message.
+        ///   Looks up a localized string similar to Message:.
         /// </summary>
         public static string Message {
             get {
@@ -170,7 +206,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8.
+        ///   Looks up a localized string similar to The password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 10.
         /// </summary>
         public static string MustBeStrongPassword {
             get {
@@ -318,10 +354,10 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 8 characters
+        ///   Looks up a localized string similar to Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 10 characters
         ///Example: {0}
         ///
-        ///Remember, we don&apos;t store it for your own security.
+        ///If you forget this password, your data and messages are lost.
         /// </summary>
         public static string SetPassword {
             get {
