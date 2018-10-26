@@ -41,7 +41,8 @@ namespace Kriptal.ViewModels
             {
                 Id = localDataManager.GetMyId(),
                 Name = localDataManager.GetName(),
-                PublicKey = localDataManager.GetPublicKey()
+                PublicKey = localDataManager.GetPublicKey(),
+                Email = localDataManager.GetEmail()
             });
 
             using (var qrGenerator = new QRCodeGenerator())

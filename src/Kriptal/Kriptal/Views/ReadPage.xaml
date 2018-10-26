@@ -18,6 +18,11 @@
             <Label 
                 Text="{Binding MessageText}" FontSize="Medium" />
             <Button 
+                    AutomationId="OpenAttachment" 
+                    HorizontalOptions="Center"
+                    Text="{x:Static localization:AppResources.OpenAttachment}" 
+                    Command="{Binding OpenAttachmentCommand}"/>
+            <Button 
                     AutomationId="OK" 
                     HorizontalOptions="Center"
                     Text="{x:Static localization:AppResources.OK}" 

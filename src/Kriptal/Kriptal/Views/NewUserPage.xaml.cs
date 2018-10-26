@@ -29,7 +29,8 @@ namespace Kriptal.Views
             {
                 Name = user.Name,
                 PublicKey = user.PublicKey,
-                Id = user.Id
+                Id = user.Id,
+                Email = user.Email
             };
 
             App.UriData = string.Empty;
@@ -41,7 +42,13 @@ namespace Kriptal.Views
         {
             try
             {
-                new LocalDataManager(App.Password).Save(new User { Id = User.Id, Name = User.Name, PublicKey = User.PublicKey });
+                new LocalDataManager(App.Password).Save(new User
+                {
+                    Id = User.Id,
+                    Name = User.Name,
+                    PublicKey = User.PublicKey,
+                    Email = User.Email
+                });
                 MessagingCenter.Send(this, "AddItem", User);
             }
             catch (Exception ex)

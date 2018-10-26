@@ -235,4 +235,7 @@ If you forget this password, your data and messages are lost</value>
   <data name="To" xml:space="preserve">
     <value> to </value>
   </data>
+  <data name="OpenAttachment" xml:space="preserve">
+    <value>Open Attachment</value>
+  </data>
 </root>

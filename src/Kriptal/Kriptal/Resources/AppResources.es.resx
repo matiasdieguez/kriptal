@@ -235,4 +235,7 @@ Si olvidas esta contraseña, se pierden todos los datos y mensajes de la cuenta<
   <data name="To" xml:space="preserve">
     <value> para </value>
   </data>
+  <data name="OpenAttachment" xml:space="preserve">
+    <value>Abrir adjunto</value>
+  </data>
 </root>

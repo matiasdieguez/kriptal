@@ -10,13 +10,16 @@ using Kriptal.Data;
 using Kriptal.Resources;
 using Newtonsoft.Json;
 using Kriptal.Crypto;
+using Kriptal.Services;
 
+using Plugin.FilePicker;
 namespace Kriptal.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReadPage : ContentPage
     {
         public Command OkCommand => new Command(() => App.SetMainPage());
+        public Command OpenAttachmentCommand => new Command(async () => await OpenAttachment());
 
         private string messageText = string.Empty;
         public string MessageText
@@ -32,6 +35,25 @@ namespace Kriptal.Views
             set => userName = value;
         }
 
+        private bool _hasAttachment = false;
+        public bool HasAttachment
+        {
+            get => _hasAttachment;
+            set => _hasAttachment = value;
+        }
+
+        public string FileInBase64
+        {
+            get;
+            set;
+        }
+
+        public string FileName
+        {
+            get;
+            set;
+        }
+
         public ReadPage()
         {
             InitializeComponent();
@@ -45,11 +67,21 @@ namespace Kriptal.Views
             var localDataManager = new LocalDataManager(App.Password);
             var privateKey = localDataManager.GetPrivateKey();
 
-            var aesKey = rsa.DecryptWithPrivate(message.AesKey, privateKey);
-            var aesIv = rsa.DecryptWithPrivate(message.AesIv, privateKey);
-
-            var text = aes.Decrypt(message.Data, aesKey, Convert.FromBase64String(aesIv));
+            var textAesKey = rsa.DecryptWithPrivate(message.TextAesKey, privateKey);
+            var textAesIv = rsa.DecryptWithPrivate(message.TextAesIv, privateKey);
+            var text = aes.Decrypt(message.TextData, textAesKey, Convert.FromBase64String(textAesIv));
             MessageText = text;
+
+            if (message.FileName != string.Empty)
+            {
+                FileName = rsa.DecryptWithPrivate(message.FileName, privateKey);
+                var fileAesKey = rsa.DecryptWithPrivate(message.FileAesKey, privateKey);
+                var fileAesIv = rsa.DecryptWithPrivate(message.FileAesIv, privateKey);
+                FileInBase64 = aes.Decrypt(message.FileData, fileAesKey, Convert.FromBase64String(fileAesIv));
+                HasAttachment = true;
+            }
+            else
+                HasAttachment = false;
 
             var fromId = rsa.DecryptWithPrivate(message.FromId, privateKey);
             var user = localDataManager.Get<User>(u => u.Id == fromId);
@@ -58,6 +90,13 @@ namespace Kriptal.Views
             App.UriData = string.Empty;
 
             BindingContext = this;
+        }
+
+        async Task OpenAttachment()
+        {
+            var sender = DependencyService.Get<ISender>();
+            var bytes = System.Text.Encoding.UTF8.GetBytes(FileInBase64);
+            sender.SaveFile(FileName, bytes);
         }
     }
 }

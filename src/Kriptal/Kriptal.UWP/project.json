@@ -4,8 +4,8 @@
     "plugin.share": "5.0.0",
     "Portable.BouncyCastle": "1.8.1.3",
     "realm.database": "1.5.0",
-    "Xam.Plugin.FilePicker": "1.1.0",
     "Xamarin.Forms": "2.3.4.224",
+    "Xamarin.Plugin.FilePicker": "1.2.1",
     "ZXing.Net.Mobile": "2.1.47",
     "ZXing.Net.Mobile.Forms": "2.1.47"
   },

@@ -1,6 +1,9 @@
-﻿using Android.App;
+﻿using Android;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Support.V4.App;
+using System;
 
 namespace Kriptal.Droid
 {
@@ -21,6 +24,9 @@ namespace Kriptal.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
+            //request permissions
+            while (!VerifyPermissions(this)){}
+
             var uriData = Intent?.Data?.ToString();
 
             App.UriData = uriData;
@@ -29,6 +35,24 @@ namespace Kriptal.Droid
             LoadApplication(app);
 
 
+        }
+
+        public static bool VerifyPermissions(Activity context)
+        {
+            var hasPermissions = false;
+            if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.Camera) != (int)Permission.Granted)
+                ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.Camera }, 0);
+            hasPermissions = Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.Camera) == (int)Permission.Granted;
+
+            if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
+                ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.WriteExternalStorage }, 2);
+            hasPermissions = hasPermissions && Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted;
+
+            if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) != (int)Permission.Granted)
+                ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.ReadExternalStorage }, 2);
+            hasPermissions = hasPermissions && Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted;
+
+            return hasPermissions;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
