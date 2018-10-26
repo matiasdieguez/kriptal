@@ -98,7 +98,7 @@ namespace Kriptal.ViewModels
             if (FileName != string.Empty)
             {
                 var fileAesKey = sha.DeriveShaKey(new RandomGeneration().GetRandomPassword(64), 16).Digest;
-                var aesFileResult = aes.Encrypt(Convert.ToBase64String(FileBytes), fileAesKey);
+                var aesFileResult = aes.Encrypt(Encoding.UTF8.GetString(FileBytes, 0, FileBytes.Length), fileAesKey);
 
                 kriptalMsg.FileData = aesFileResult.EncryptedText;
                 kriptalMsg.FileName = rsa.EncryptWithPublic(FileName, User.PublicKey); ;

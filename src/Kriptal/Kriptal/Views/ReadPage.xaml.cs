@@ -42,7 +42,7 @@ namespace Kriptal.Views
             set => _hasAttachment = value;
         }
 
-        public string FileInBase64
+        public string FileData
         {
             get;
             set;
@@ -77,7 +77,7 @@ namespace Kriptal.Views
                 FileName = rsa.DecryptWithPrivate(message.FileName, privateKey);
                 var fileAesKey = rsa.DecryptWithPrivate(message.FileAesKey, privateKey);
                 var fileAesIv = rsa.DecryptWithPrivate(message.FileAesIv, privateKey);
-                FileInBase64 = aes.Decrypt(message.FileData, fileAesKey, Convert.FromBase64String(fileAesIv));
+                FileData = aes.Decrypt(message.FileData, fileAesKey, Convert.FromBase64String(fileAesIv));
                 HasAttachment = true;
             }
             else
@@ -95,7 +95,7 @@ namespace Kriptal.Views
         async Task OpenAttachment()
         {
             var sender = DependencyService.Get<ISender>();
-            var bytes = System.Text.Encoding.UTF8.GetBytes(FileInBase64);
+            var bytes = System.Text.Encoding.UTF8.GetBytes(FileData);
             sender.SaveFile(FileName, bytes);
         }
     }
