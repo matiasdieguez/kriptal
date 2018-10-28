@@ -251,7 +251,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Attachment.
+        ///   Looks up a localized string similar to Save Attachment.
         /// </summary>
         public static string OpenAttachment {
             get {
