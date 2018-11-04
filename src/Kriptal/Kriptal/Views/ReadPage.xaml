@@ -20,6 +20,8 @@
             <Button 
                     AutomationId="OpenAttachment" 
                     HorizontalOptions="Center"
+                    IsVisible="False"
+                    IsEnabled="False"
                     Text="{x:Static localization:AppResources.OpenAttachment}" 
                     Command="{Binding OpenAttachmentCommand}"/>
             <Button 
