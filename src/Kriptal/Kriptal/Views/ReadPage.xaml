@@ -17,11 +17,11 @@
             </StackLayout>
             <Label 
                 Text="{Binding MessageText}" FontSize="Medium" />
-            <Button 
+            <!--<Button 
                     AutomationId="OpenAttachment" 
                     HorizontalOptions="Center"
                     Text="{x:Static localization:AppResources.OpenAttachment}" 
-                    Command="{Binding OpenAttachmentCommand}"/>
+                    Command="{Binding OpenAttachmentCommand}"/>-->
             <Button 
                     AutomationId="OpenAttachment" 
                     HorizontalOptions="Center"

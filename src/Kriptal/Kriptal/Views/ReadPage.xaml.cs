@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Plugin.Share;
@@ -56,6 +57,12 @@ namespace Kriptal.Views
                 var text = aes.Decrypt(message.TextData, textAesKey, Convert.FromBase64String(textAesIv));
                 MessageText = text;
 
+                if (!string.IsNullOrEmpty(message.BlockchainStampUrl))
+                {
+                    var blockchainUrl = rsa.DecryptWithPrivate(message.BlockchainStampUrl, privateKey);
+                    BlockchainReciptUrl = blockchainUrl;
+                }
+
                 if (message.FileName != string.Empty)
                 {
                     FileName = rsa.DecryptWithPrivate(message.FileName, privateKey);
@@ -105,7 +112,23 @@ namespace Kriptal.Views
                 return;
             }
 
-            await CrossShare.Current.OpenBrowser(BlockchainReciptUrl);
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                var id = "94e5471b109d384";
+                var token = "b2cac4d5-0df4-41e9-fb85-ba001bced70e";
+
+                var authData = $"{id}:{token}";
+                var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
+
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", authHeaderValue);
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                var response = await client.GetAsync(BlockchainReciptUrl);
+                var cont = await response.Content.ReadAsByteArrayAsync();
+                var jsonResponse = Encoding.UTF8.GetString(cont, 0, cont.Length);
+
+                await DisplayAlert(AppResources.Title, jsonResponse, AppResources.OK);
+            }
         }
     }
 }

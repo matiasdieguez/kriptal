@@ -153,7 +153,10 @@ namespace Kriptal.ViewModels
                     var cont = await response.Content.ReadAsByteArrayAsync();
                     var jsonResponse = Encoding.UTF8.GetString(cont, 0, cont.Length);
 
-                    kriptalMsg.BlockchainStampUrl = "https://api-prod.stampery.com/stamps/" + ".pdf";
+                    var stampDataResponse = JsonConvert.DeserializeObject<StampResult>(jsonResponse);
+
+                    var url = rsa.EncryptWithPublic("https://api-prod.stampery.com/stamps/" + stampDataResponse.Result.Id, User.PublicKey);
+                    kriptalMsg.BlockchainStampUrl = url;
                 }
             }
             catch (Exception ex)
