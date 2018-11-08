@@ -20,10 +20,13 @@
             <Button 
                     AutomationId="OpenAttachment" 
                     HorizontalOptions="Center"
-                    IsVisible="False"
-                    IsEnabled="False"
                     Text="{x:Static localization:AppResources.OpenAttachment}" 
                     Command="{Binding OpenAttachmentCommand}"/>
+            <Button 
+                    AutomationId="OpenAttachment" 
+                    HorizontalOptions="Center"
+                    Text="{x:Static localization:AppResources.BlockchainRecipt}" 
+                    Command="{Binding OpenBlockchainReciptCommand}"/>
             <Button 
                     AutomationId="OK" 
                     HorizontalOptions="Center"

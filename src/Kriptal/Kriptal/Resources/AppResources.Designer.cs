@@ -71,6 +71,49 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kriptal is an Open Source Serverless End to End Encryptor
+        ///
+        ///You can securely use any digital communication channel like Email or IM if you encrypt your messages with Kriptal
+        ///
+        ///Physically share your Kriptal QR or use the remote option Send Contact to other people and get from them their Kriptal Contact to begin secure communications.
+        /// </summary>
+        public static string AboutInfo {
+            get {
+                return ResourceManager.GetString("AboutInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created by Matías Dieguez
+        ///https://github.com/matiasdieguez/kriptal
+        ///UI Design by Fernando Dieguez
+        ///Published Free in Play Store by RatKid Security, a division of RatKid Games.
+        /// </summary>
+        public static string AboutInfoAuthor {
+            get {
+                return ResourceManager.GetString("AboutInfoAuthor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kriptal uses the following Open Source projects:
+        ///
+        ///https://github.com/onovotny/bc-csharp/blob/netstandard/License.html
+        ///https://github.com/Fody/Fody/blob/master/License.txt	
+        ///https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
+        ///https://github.com/jguertl/SharePlugin/blob/master/LICENSE.md
+        ///https://github.com/codebude/QRCoder/blob/master/LICENSE.txt
+        ///https://github.com/realm/realm-dotnet/blob/master/license.txt
+        ///https://github.com/xamarin/Xamarin.Forms/blob/master/LICENSE
+        ///https://github.com/j [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string AboutOpenSource {
+            get {
+                return ResourceManager.GetString("AboutOpenSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add contact.
         /// </summary>
         public static string AddContact {
@@ -98,11 +141,30 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blockchain Stamp Recipt.
+        /// </summary>
+        public static string BlockchainRecipt {
+            get {
+                return ResourceManager.GetString("BlockchainRecipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t read the message.
+        ///Verify that both users have the other&apos;s last Kriptal Contact..
+        /// </summary>
+        public static string CantRead {
+            get {
+                return ResourceManager.GetString("CantRead", resourceCulture);
             }
         }
         
@@ -166,6 +228,15 @@ namespace Kriptal.Resources {
         public static string FromTitle {
             get {
                 return ResourceManager.GetString("FromTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open GitHub Project.
+        /// </summary>
+        public static string GithubProject {
+            get {
+                return ResourceManager.GetString("GithubProject", resourceCulture);
             }
         }
         
@@ -238,6 +309,24 @@ namespace Kriptal.Resources {
         public static string NewContact {
             get {
                 return ResourceManager.GetString("NewContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No attachment included.
+        /// </summary>
+        public static string NoAttachment {
+            get {
+                return ResourceManager.GetString("NoAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No blockchain stamp recipt included.
+        /// </summary>
+        public static string NoBlochckainRecipt {
+            get {
+                return ResourceManager.GetString("NoBlochckainRecipt", resourceCulture);
             }
         }
         

@@ -1,10 +1,7 @@
-﻿using Realms;
-
-namespace Kriptal.Models
+﻿namespace Kriptal.Models
 {
-    public class User : RealmObject
+    public class UserItem
     {
-        [PrimaryKey]
         public string Id { get; set; }
 
         public string Name { get; set; }

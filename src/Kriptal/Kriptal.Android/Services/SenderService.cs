@@ -1,14 +1,10 @@
-﻿using Android;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Support.V4.App;
-using Kriptal.Resources;
-using Kriptal.Services;
+﻿using Android.Content;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using Xamarin.Forms;
+using Kriptal.Resources;
+using Kriptal.Services;
 
 [assembly: Dependency(typeof(Kriptal.Droid.Services.SenderService))]
 namespace Kriptal.Droid.Services
@@ -37,6 +33,7 @@ namespace Kriptal.Droid.Services
             intent.PutExtra(Intent.ExtraTitle, AppResources.Title);
             intent.PutExtra(Intent.ExtraEmail, to);
             intent.PutExtra(Intent.ExtraText, text);
+            intent.AddFlags(ActivityFlags.NewTask);
             intent.AddFlags(ActivityFlags.GrantReadUriPermission);
 
             Android.App.Application.Context.StartActivity(intent);
@@ -83,8 +80,8 @@ namespace Kriptal.Droid.Services
             Android.App.Application.Context.StartActivity(Intent.CreateChooser(intent, "View file"));
         }
 
-        private static IDictionary<string, string> _mappings = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
-
+        private static IDictionary<string, string> _mappings = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
+        {
         #region Big freaking list of mime types
         // combination of values from Windows 7 Registry and 
         // from C:\Windows\System32\inetsrv\config\applicationHost.config
@@ -650,16 +647,12 @@ namespace Kriptal.Droid.Services
         {".z", "application/x-compress"},
         {".zip", "application/x-zip-compressed"},
         #endregion
-
         };
 
         public static string GetMimeType(string extension)
         {
             if (!extension.StartsWith("."))
-            {
                 extension = "." + extension;
-            }
-
 
             return _mappings.TryGetValue(extension, out string mime) ? mime : "application/octet-stream";
         }

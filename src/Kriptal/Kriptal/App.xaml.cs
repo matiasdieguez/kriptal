@@ -1,9 +1,8 @@
-﻿using Kriptal.Helpers;
+﻿using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using Kriptal.Helpers;
 using Kriptal.Resources;
 using Kriptal.Views;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Kriptal

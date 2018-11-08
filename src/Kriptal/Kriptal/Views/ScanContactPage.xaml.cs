@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Xamarin.Forms;
@@ -14,14 +13,8 @@ namespace Kriptal.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScanContactPage : ContentPage
     {
-        /// <summary>
-        /// ZXingScannerView
-        /// </summary>
         ZXingScannerView _scannerView;
 
-        /// <summary>
-        /// ActivateEnrolledPage
-        /// </summary>
         public ScanContactPage()
         {
             InitializeComponent();
@@ -29,9 +22,6 @@ namespace Kriptal.Views
             InitializeQr();
         }
 
-        /// <summary>
-        /// InitializeQr
-        /// </summary>
         private void InitializeQr()
         {
             _scannerView = new ZXingScannerView
@@ -61,7 +51,6 @@ namespace Kriptal.Views
             overlay.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });//3
             overlay.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });//4
 
-            //Imagen solo de forma ilustrativa, responsiva
             Image imageButton = new Image
             {
                 Source = "backscanner.png",
@@ -71,7 +60,6 @@ namespace Kriptal.Views
                 BackgroundColor = Color.Transparent,
             };
 
-            //Boton real con funcionalidad
             var back = new Button
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -106,11 +94,8 @@ namespace Kriptal.Views
 
         }
 
-        /// <summary>
-        /// ProcessProduct
-        /// </summary>
-        /// <param name="result">Result ZXing</param>
-        /// <returns>bool</returns>
+#pragma warning disable CS1030 // #warning directive
+#pragma warning disable CS1998 // #warning directive
         private async Task<bool> ProcessQr(string qrData)
         {
             _scannerView.IsAnalyzing = false;
@@ -120,7 +105,7 @@ namespace Kriptal.Views
             {
                 var user = JsonConvert.DeserializeObject<UserItem>(qrData);
                 App.UriData = UriMessage.KriptalContactUri + Uri.EscapeDataString(qrData);
-                App.Current.MainPage = new NewUserPage();
+                Application.Current.MainPage = new NewUserPage();
             }
             catch
             {
@@ -128,29 +113,20 @@ namespace Kriptal.Views
 
             return true;
         }
+#pragma warning restore CS1030 // #warning directive
+#pragma warning restore CS1998 // #warning directive
 
-        /// <summary>
-        /// OnBackButtonClicked
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
         private void OnBackButtonClicked(object sender, EventArgs e)
         {
             GoBack();
         }
 
-        /// <summary>
-        /// OnAppearing
-        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
             _scannerView.IsScanning = true;
         }
 
-        /// <summary>
-        /// OnDisappearing
-        /// </summary>
         protected override void OnDisappearing()
         {
             try
@@ -165,19 +141,11 @@ namespace Kriptal.Views
             }
         }
 
-        /// <summary>
-        /// OnBackButtonPressed
-        /// </summary>
-        /// <returns>bool</returns>
         protected override bool OnBackButtonPressed()
         {
             return GoBack();
         }
 
-        /// <summary>
-        /// GoBack
-        /// </summary>
-        /// <returns>bool</returns>
         private bool GoBack()
         {
             try

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using Kriptal.Models;
 using Kriptal.Data;
 using Kriptal.Resources;
-using Newtonsoft.Json;
 
 namespace Kriptal.Views
 {

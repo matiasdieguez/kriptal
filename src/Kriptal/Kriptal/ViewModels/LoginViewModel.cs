@@ -2,10 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
 using Xamarin.Forms;
-
-using Kriptal.Views;
 using Kriptal.Crypto;
 using Kriptal.Resources;
 using Kriptal.Data;
@@ -75,14 +72,9 @@ namespace Kriptal.ViewModels
 
         public string GetSamplePassword()
         {
-            return new RandomGeneration().GetRandomPassword();
+            return new RandomGeneration().GetRandomPassword(10);
         }
 
-        /// <summary>
-        /// CheckStrongPassword
-        /// </summary>
-        /// <param name="password">password</param>
-        /// <returns>bool</returns>
         public static bool CheckStrongPassword(string password)
         {
             if (string.IsNullOrEmpty(password) ||
@@ -145,7 +137,7 @@ namespace Kriptal.ViewModels
 
                 LocalDataManager localDataManager;
 
-                if (!LocalDataManager.ExistsPassword() || IsAccountReset)
+                if (IsNewAccount || !LocalDataManager.ExistsPassword() || IsAccountReset)
                 {
                     var hash = sha.DeriveShaKey(Password, 64);
 

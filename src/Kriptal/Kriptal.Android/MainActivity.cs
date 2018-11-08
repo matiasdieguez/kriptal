@@ -33,8 +33,6 @@ namespace Kriptal.Droid
             var app = new App();
 
             LoadApplication(app);
-
-
         }
 
         public static bool VerifyPermissions(Activity context)

@@ -11,13 +11,8 @@ namespace Kriptal.ViewModels
             set { SetProperty(ref _isBusy, value); }
         }
 
-        /// <summary>
-        /// Private backing field to hold the title
-        /// </summary>
         string _title = string.Empty;
-        /// <summary>
-        /// Public property to set and get the title of the item
-        /// </summary>
+
         public string Title
         {
             get { return _title; }

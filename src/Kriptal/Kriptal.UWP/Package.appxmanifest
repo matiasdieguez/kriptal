@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="5e9be0db-90c2-4231-8925-4522fb1801d2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Kriptal.UWP</DisplayName>
-    <PublisherDisplayName>Matias</PublisherDisplayName>
+    <PublisherDisplayName>Matias Dieguez</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -20,6 +20,9 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Match="http://*.kriptal.org" Type="include" WindowsRuntimeAccess="none" />
+      </uap:ApplicationContentUriRules>
     </Application>
   </Applications>
   <Capabilities>

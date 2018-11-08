@@ -1,17 +1,15 @@
-﻿using System.IO;
-
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using QRCoder;
-using Newtonsoft.Json;
-
+using Plugin.Share;
+using Plugin.Share.Abstractions;
 using Kriptal.Data;
 using Kriptal.Models;
 using Kriptal.Resources;
-using System.Threading.Tasks;
 using Kriptal.Helpers;
-using System;
-using Plugin.Share;
-using Plugin.Share.Abstractions;
 using Kriptal.Views;
 
 namespace Kriptal.ViewModels

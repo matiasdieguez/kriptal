@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using Kriptal.ViewModels;
 
 namespace Kriptal.Views

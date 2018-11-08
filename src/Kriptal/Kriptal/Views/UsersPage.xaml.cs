@@ -1,8 +1,6 @@
 ﻿using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using Kriptal.Models;
 using Kriptal.ViewModels;
 
@@ -22,13 +20,17 @@ namespace Kriptal.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as UserItem;
-            if (item == null)
+            if (!(args.SelectedItem is UserItem item))
                 return;
 
-            await Navigation.PushAsync(new WriteToUserPage(new WriteToUserViewModel(new User { Id = item.Id, Name = item.Name, PublicKey = item.PublicKey })));
+            await Navigation.PushAsync(new WriteToUserPage(new WriteToUserViewModel(Navigation,
+                new User
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    PublicKey = item.PublicKey
+                })));
 
-            // Manually deselect item
             UsersListView.SelectedItem = null;
         }
 

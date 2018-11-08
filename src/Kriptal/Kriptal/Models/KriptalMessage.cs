@@ -11,5 +11,6 @@
         public string FileName { get; set; } = string.Empty;
         public string FileAesKey { get; set; }
         public string FileAesIv { get; set; }
+        public string BlockchainStampUrl { get; set; }
     }
 }

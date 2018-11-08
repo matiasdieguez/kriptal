@@ -6,4 +6,3 @@
         public byte[] Salt { get; set; }
     }
 }
-

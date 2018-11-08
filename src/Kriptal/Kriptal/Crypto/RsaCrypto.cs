@@ -1,4 +1,8 @@
-﻿using Org.BouncyCastle.Asn1.Pkcs;
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+using Org.BouncyCastle.Asn1.Pkcs;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Encodings;
@@ -8,14 +12,9 @@ using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
-using System;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kriptal.Crypto
 {
-
     public class RsaCrypto
     {
         public async Task<RsaKeyPair> CreateKeyPair()
@@ -74,8 +73,6 @@ namespace Kriptal.Crypto
             var encrypted = Convert.ToBase64String(encryptEngine.ProcessBlock(bytesToEncrypt, 0, bytesToEncrypt.Length));
             return encrypted;
         }
-
-        // Decryption:
 
         public string DecryptWithPrivate(string base64Input, string privateKey)
         {

@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using Kriptal.ViewModels;
 
 namespace Kriptal.Views
@@ -10,7 +9,6 @@ namespace Kriptal.Views
     {
         WriteToUserViewModel viewModel;
 
-        // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
         public WriteToUserPage()
         {
             InitializeComponent();

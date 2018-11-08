@@ -1,20 +1,18 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Newtonsoft.Json;
+using Plugin.FilePicker;
 using Plugin.Share;
 using Plugin.Share.Abstractions;
-using Newtonsoft.Json;
-
 using Kriptal.Data;
 using Kriptal.Crypto;
 using Kriptal.Models;
 using Kriptal.Helpers;
 using Kriptal.Resources;
 using Kriptal.Services;
-using Plugin.FilePicker;
-using System.IO;
-using System.Text;
 
 namespace Kriptal.ViewModels
 {
@@ -53,8 +51,11 @@ namespace Kriptal.ViewModels
         public Command SendCommand => new Command(async () => await Send());
         public Command AttachFileCommand => new Command(async () => await AttachFile());
 
-        public WriteToUserViewModel(User user = null)
+        INavigation Navigation;
+
+        public WriteToUserViewModel(INavigation nav, User user = null)
         {
+            Navigation = nav;
             Title = AppResources.Contacts + AppResources.To + user.Name;
             User = user;
         }
@@ -111,19 +112,54 @@ namespace Kriptal.ViewModels
             kriptalMsg.TextAesKey = rsa.EncryptWithPublic(aesKey, User.PublicKey);
             kriptalMsg.TextAesIv = rsa.EncryptWithPublic(Convert.ToBase64String(aesResult.Iv), User.PublicKey);
 
-            var text = UriMessage.KriptalMessageUri + Uri.EscapeDataString(JsonConvert.SerializeObject(kriptalMsg));
-            //await CrossShare.Current.Share(new ShareMessage { Title = AppResources.FromTitle, Url = text });
-            var sender = DependencyService.Get<ISender>();
+            var id = "94e5471b109d384";
+            var token = "b2cac4d5-0df4-41e9-fb85-ba001bced70e";
 
+            var stampData = new BlockhainStamp
+            {
+                Message = kriptalMsg,
+                SenderPublicKey = localDataManager.GetPublicKey(),
+                DestinationPublicKey = User.PublicKey,
+                DateTime = DateTime.UtcNow.ToString()
+            };
+
+            try
+            {
+                var stampJson = JsonConvert.SerializeObject(stampData);
+                var salt = sha.CreateSalt(8);
+                var stampHash = sha.Pbkdf2Sha256GetHash(stampJson, salt, 1, 256);
+                stampData = null;
+                var content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(new StampRequest { Hash = Encoding.UTF8.GetString(stampHash, 0, stampHash.Length) }), Encoding.UTF8, "application/json");
+
+                using (var client = new System.Net.Http.HttpClient())
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes($"{id}:{token}"))}");
+                    //client.DefaultRequestHeaders.Add("Content-Type", "application/json");
+
+                    var response = await client.PostAsync("https://api-prod.stampery.com/stamps", content);
+                    var result = JsonConvert.DeserializeObject<StampResult>(await response.Content.ReadAsStringAsync());
+                    kriptalMsg.BlockchainStampUrl = "https://api-prod.stampery.com/stamps/" + result.Result.Id + ".pdf";
+                }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
+            var text = UriMessage.KriptalMessageUri + Uri.EscapeDataString(JsonConvert.SerializeObject(kriptalMsg));
+            await CrossShare.Current.Share(new ShareMessage { Title = AppResources.FromTitle, Url = text });
+
+            //var sender = DependencyService.Get<ISender>();
             //if (FileName != string.Empty)
             //{
             //    sender.Send(text, User.Email, FileBytes, FileName);
             //}
             //else
-
-            sender.Send(text, User.Email);
+            //  sender.Send(text, User.Email);
 
             IsBusy = false;
+
+            //await Navigation.PopAsync();
         }
     }
 }

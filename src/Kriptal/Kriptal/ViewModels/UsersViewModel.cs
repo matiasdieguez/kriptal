@@ -2,13 +2,11 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Xamarin.Forms;
+using Kriptal.Data;
 using Kriptal.Helpers;
 using Kriptal.Models;
 using Kriptal.Views;
-
-using Xamarin.Forms;
-using Kriptal.Data;
 using Kriptal.Resources;
 
 namespace Kriptal.ViewModels
@@ -63,12 +61,6 @@ namespace Kriptal.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                MessagingCenter.Send(new MessagingCenterAlert
-                {
-                    Title = "Error",
-                    Message = "Unable to load users.",
-                    Cancel = "OK"
-                }, "message");
             }
             finally
             {

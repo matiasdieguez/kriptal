@@ -1,14 +1,13 @@
-﻿using Org.BouncyCastle.Crypto.Engines;
+﻿using System;
+using System.Text;
+using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Modes;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
-using System;
-using System.Text;
 
 namespace Kriptal.Crypto
 {
-
     public class AesCrypto
     {
         public AesResult Encrypt(string input, string keyString)
