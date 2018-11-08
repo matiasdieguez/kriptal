@@ -127,21 +127,36 @@ namespace Kriptal.ViewModels
             {
                 var stampJson = JsonConvert.SerializeObject(stampData);
                 var salt = sha.CreateSalt(8);
-                var stampHash = sha.Pbkdf2Sha256GetHash(stampJson, salt, 1, 256);
+                var stampHash = sha.Pbkdf2Sha256GetHash(stampJson, salt, 1, 32);
                 stampData = null;
-                var content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(new StampRequest { Hash = Encoding.UTF8.GetString(stampHash, 0, stampHash.Length) }), Encoding.UTF8, "application/json");
+
+                var hashString = new StringBuilder();
+
+                for (int i = 0; i < stampHash.Length; i++)
+                    hashString.Append(stampHash[i].ToString("x2").ToLower());
+
+                var content = new System.Net.Http.StringContent(JsonConvert.SerializeObject(
+                    new StampRequest
+                    {
+                        Hash = hashString.ToString()
+                    }), Encoding.UTF8, "application/json");
 
                 using (var client = new System.Net.Http.HttpClient())
                 {
-                    client.DefaultRequestHeaders.Add("Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes($"{id}:{token}"))}");
-                    //client.DefaultRequestHeaders.Add("Content-Type", "application/json");
+                    var authData = $"{id}:{token}";
+                    var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
+
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", authHeaderValue);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var response = await client.PostAsync("https://api-prod.stampery.com/stamps", content);
-                    var result = JsonConvert.DeserializeObject<StampResult>(await response.Content.ReadAsStringAsync());
-                    kriptalMsg.BlockchainStampUrl = "https://api-prod.stampery.com/stamps/" + result.Result.Id + ".pdf";
+                    var cont = await response.Content.ReadAsByteArrayAsync();
+                    var jsonResponse = Encoding.UTF8.GetString(cont, 0, cont.Length);
+
+                    kriptalMsg.BlockchainStampUrl = "https://api-prod.stampery.com/stamps/" + ".pdf";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
