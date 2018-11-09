@@ -1,5 +1,5 @@
 # Kriptal
-Kriptal is an open source, serverless, end-to-end encripted encryptor
+Kriptal is an Open Source, Serverless, Blockchain Stamped, End-to-End Encryptor
 
 [![Build status](http://build.mobile.azure.com/v0.1/apps/a42d1435-5abe-4264-b0b0-bf5503b1037d/branches/master/badge)](http://build.mobile.azure.com/v0.1/apps/a42d1435-5abe-4264-b0b0-bf5503b1037d/branches/master/badge)
 
@@ -7,7 +7,7 @@ Kriptal is an open source, serverless, end-to-end encripted encryptor
 https://install.mobile.azure.com/users/matiasdieguez01/apps/kriptal/distribution_groups/kriptal%20public%20group
 
 # Licences and Copyright
-Matías Dieguez releases Kriptal with MIT licence
+MatÃ­as Dieguez releases Kriptal with MIT licence
 https://github.com/matiasdieguez/Kriptal/blob/master/LICENSE
 
 Kriptal uses the following Open Source software:
