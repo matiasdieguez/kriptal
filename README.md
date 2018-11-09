@@ -1,5 +1,5 @@
 # Kriptal
-Kriptal is an Open Source, Serverless, Blockchain Stamped, End-to-End Encryptor
+Kriptal is an Open Source, Serverless, Blockchain Stamper, End-to-End Encryptor
 
 [![Build status](http://build.mobile.azure.com/v0.1/apps/a42d1435-5abe-4264-b0b0-bf5503b1037d/branches/master/badge)](http://build.mobile.azure.com/v0.1/apps/a42d1435-5abe-4264-b0b0-bf5503b1037d/branches/master/badge)
 
