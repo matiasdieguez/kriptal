@@ -219,9 +219,7 @@ Esto es por razones de seguridad. Ver mas sobre esto en Acerca de o en kriptal.o
   </data>
   <data name="SetPassword" xml:space="preserve">
     <value>La contraseña debe contener mayúsculas, minúsculas, símbolos, números, letras y tener una longitud mínima de 10 caracteres
-Ejemplo: {0}
-
-Si olvidas esta contraseña, se pierden todos los datos y mensajes de la cuenta</value>
+Ejemplo: {0}</value>
   </data>
   <data name="ShareContact" xml:space="preserve">
     <value>Enviar mi contacto</value>
@@ -279,5 +277,8 @@ Verifique que ambos usuarios tengan el último contacto de Kriptal del otro.</va
   </data>
   <data name="NoBlochckainRecipt" xml:space="preserve">
     <value>No hay un recibo de blockchain incluído</value>
+  </data>
+  <data name="PasswordWarning" xml:space="preserve">
+    <value>Si olvidas esta contraseña, se pierden todos los datos y mensajes de la cuenta</value>
   </data>
 </root>

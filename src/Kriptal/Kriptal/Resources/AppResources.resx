@@ -219,9 +219,7 @@ This is for security reasons. Learn more in About tab or at kriptal.org</value>
   </data>
   <data name="SetPassword" xml:space="preserve">
     <value>Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 10 characters
-Example: {0}
-
-If you forget this password, your data and messages are lost</value>
+Example: {0}</value>
   </data>
   <data name="ShareContact" xml:space="preserve">
     <value>Send my contact</value>
@@ -279,5 +277,8 @@ Verify that both users have the other's last Kriptal Contact.</value>
   </data>
   <data name="NoBlochckainRecipt" xml:space="preserve">
     <value>No blockchain stamp recipt included</value>
+  </data>
+  <data name="PasswordWarning" xml:space="preserve">
+    <value>If you forget this password, your data and messages are lost</value>
   </data>
 </root>
