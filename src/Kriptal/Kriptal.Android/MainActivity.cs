@@ -7,7 +7,7 @@ using System;
 
 namespace Kriptal.Droid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "@string/app_name", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     [IntentFilter(new[] { Android.Content.Intent.ActionView },
         DataScheme = "http",
         DataHost = "kriptal.org",
