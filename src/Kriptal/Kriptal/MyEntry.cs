@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Kriptal.CustomControl
+namespace Kriptal
 {
-    class MyEntry : Entry
+    public class MyEntry : Entry
     {
     }
 }

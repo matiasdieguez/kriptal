@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:Kriptal.Resources"
-             xmlns:local="clr-namespace:Kriptal.CustomControl"
+             xmlns:local="clr-namespace:Kriptal;assembly=Kriptal"
              x:Class="Kriptal.Views.LoginPage">
     <ContentPage.Content>
         <Grid>
