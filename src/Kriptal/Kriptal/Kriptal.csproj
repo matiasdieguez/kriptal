@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyButton.cs" />
     <Compile Include="Crypto\AesCrypto.cs" />
     <Compile Include="Crypto\AesResult.cs" />
     <Compile Include="Crypto\RandomGeneration.cs" />

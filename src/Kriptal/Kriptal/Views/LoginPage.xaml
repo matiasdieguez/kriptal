@@ -5,32 +5,51 @@
              xmlns:local="clr-namespace:Kriptal;assembly=Kriptal"
              x:Class="Kriptal.Views.LoginPage">
     <ContentPage.Content>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" Source="background.png"/>
-            <ScrollView Grid.Column="0" Grid.Row="0">
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Orientation="Vertical" Spacing="5">
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Orientation="Vertical" Spacing="0">
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}"/>
+                <Grid HorizontalOptions="FillAndExpand" Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
                     <Image 
+                        Grid.Row="0" 
+                        Grid.Column="0" 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand" 
+                        Aspect="AspectFill" 
+                        Source="background.png"/>
+                    <StackLayout 
+                        Grid.Row="0" 
+                        Grid.Column="0" 
+                        Orientation="Vertical" 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand">
+                        <Image 
                         HorizontalOptions="CenterAndExpand"
                         Source="kriptal.png" 
                         HeightRequest="60"
                         Aspect="AspectFit"
+                            Margin="0,20,0,0"
                     />
-                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" />
-                    <local:MyEntry 
+                        <local:MyEntry 
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
                         AutomationId="Name" 
+                        BackgroundColor="Transparent"
+                        Margin="20,10,20,0"
                         Text="{Binding Name}"
+                        TextColor="{x:StaticResource LightEntryTextColor}"
                         IsEnabled="{Binding IsNewAccount}"
+                        FontSize="Medium"
                         IsVisible="{Binding IsNewAccount}"
-                        Placeholder="{x:Static localization:AppResources.Name}"/>
-                    <local:MyEntry
+                        Placeholder="{x:Static localization:AppResources.Name}"
+                        PlaceholderColor="{x:StaticResource LightEntryTextColor}"
+                        />
+                        <local:MyEntry
                         Keyboard="Email"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
@@ -39,12 +58,13 @@
                         TextColor="{x:StaticResource LightEntryTextColor}"
                         PlaceholderColor="{x:StaticResource LightEntryTextColor}"
                         AutomationId="Email" 
-                        FontSize="Small"
+                        FontSize="Medium"
                         Text="{Binding Email}"
                         IsEnabled="{Binding IsNewAccount}"
                         IsVisible="{Binding IsNewAccount}"
-                        Placeholder="{x:Static localization:AppResources.Email}"/>
-                    <local:MyEntry 
+                        Placeholder="{x:Static localization:AppResources.Email}"
+                        />
+                        <local:MyEntry 
                         x:Name="Password" 
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
@@ -53,68 +73,81 @@
                         PlaceholderColor="{x:StaticResource LightEntryTextColor}"
                         Margin="20,0,20,0"
                         AutomationId="Password" 
-                        FontSize="Small"
+                        FontSize="Medium"
                         Text="{Binding Password}"
                         IsPassword="True" 
-                        Placeholder="{x:Static localization:AppResources.Password}"/>
-                    <local:MyEntry 
+                        Placeholder="{x:Static localization:AppResources.Password}"
+                        />
+                        <local:MyEntry 
                         x:Name="RepeatPassword" 
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
                         BackgroundColor="Transparent"
                         TextColor="{x:StaticResource LightEntryTextColor}"
                         PlaceholderColor="{x:StaticResource LightEntryTextColor}"
-                        Margin="20,0,20,0"
+                        Margin="20,0,20,10"
                         AutomationId="RepeatPassword" 
-                        FontSize="Small"
+                        FontSize="Medium"
                         Text="{Binding RepeatPassword}"
                         IsPassword="True" 
                         IsEnabled="{Binding IsNewAccount}"
                         IsVisible="{Binding IsNewAccount}"
-                        Placeholder="{x:Static localization:AppResources.RepeatPassword}"/>
-                    <Label 
-                        FontSize="Small"
+                        Placeholder="{x:Static localization:AppResources.RepeatPassword}"
+                        />
+                        <local:MyButton
+                            BackgroundColor="{x:StaticResource Accent}"
+                            AutomationId="Enter"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"
+                            Margin="20,0,20,20"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="{x:Static localization:AppResources.Enter}" 
+                            FontSize="Medium"
+                            TextColor="{x:StaticResource Accent}"
+                            Command="{Binding EnterCommand}"/>
+                    </StackLayout>
+                </Grid>
+                <Label 
+                        FontSize="Medium"
                         HorizontalOptions="FillAndExpand"
-                        TextColor="White"
+                        TextColor="{x:StaticResource MediumGrayTextColor}"
+                        VerticalOptions="Start"
                         HorizontalTextAlignment="Start"
                         Margin="20,0,20,0"
                         IsEnabled="{Binding IsNewAccount}"
                         IsVisible="{Binding IsNewAccount}"
-                        Text="{Binding PasswordInfo}"/>
-                    <Label
-                        FontSize="Small"
+                        Text="{Binding PasswordInfo}"
+                   />
+                <Label
+                        FontSize="Medium"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
-                        Margin="20,0,20,0"
-                        BackgroundColor="{x:StaticResource Accent}"
+                        Margin="20,20,20,0"
+                        VerticalOptions="Start"
+                        BackgroundColor="{x:StaticResource DarkTransparency}"
                         TextColor="White"
                         Text="{x:Static localization:AppResources.PasswordWarning}"
-                        />
-                    <Button 
-                        AutomationId="Enter"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="{x:StaticResource Accent}"
-                        TextColor="White"
-                        Margin="20,0,20,0"
-                        BorderRadius="5"
-                        BorderWidth="1"
-                        BorderColor="Transparent"
-                        FontSize="Small"
-                        Text="{x:Static localization:AppResources.Enter}" 
-                        Command="{Binding EnterCommand}"/>
-                    <Label Text="{Binding Text}"
+                   />
+                <local:MyButton
+                      BackgroundColor="{x:StaticResource Accent}"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="Center"
+                      Margin="20,0,20,20"
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      Text="{x:Static localization:AppResources.ResetAccount}" 
+                      FontSize="Medium"
+                      TextColor="{x:StaticResource Accent}"
+                      AutomationId="Reset" 
+                      IsEnabled="{Binding NotForNewAccount}"
+                      IsVisible="{Binding NotForNewAccount}"
+                      Command="{Binding ResetCommand}"
+                      />
+                <Label Text="{Binding Text}"
                            TextColor="White"
                            />
-                    <Button 
-                    AutomationId="Reset" 
-                    HorizontalOptions="CenterAndExpand"
-                    FontSize="Small"
-                    IsEnabled="{Binding NotForNewAccount}"
-                    IsVisible="{Binding NotForNewAccount}"
-                    Text="{x:Static localization:AppResources.ResetAccount}" 
-                    Command="{Binding ResetCommand}"/>
-                </StackLayout>
-            </ScrollView>
-        </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
