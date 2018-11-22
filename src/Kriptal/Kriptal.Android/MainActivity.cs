@@ -7,7 +7,7 @@ using System;
 
 namespace Kriptal.Droid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "@string/app_name", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     [IntentFilter(new[] { Android.Content.Intent.ActionView },
         DataScheme = "http",
         DataHost = "kriptal.org",
@@ -25,7 +25,7 @@ namespace Kriptal.Droid
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             //request permissions
-            while (!VerifyPermissions(this)){}
+            //while (!VerifyPermissions(this)) { }
 
             var uriData = Intent?.Data?.ToString();
 
@@ -35,23 +35,26 @@ namespace Kriptal.Droid
             LoadApplication(app);
         }
 
-        public static bool VerifyPermissions(Activity context)
-        {
-            var hasPermissions = false;
-            if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.Camera) != (int)Permission.Granted)
-                ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.Camera }, 0);
-            hasPermissions = Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.Camera) == (int)Permission.Granted;
+        //public static bool VerifyPermissions(Activity context)
+        //{
+        //    var hasPermissions = false;
+        //    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.Camera) != (int)Permission.Granted)
+        //    {
+        //        ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.Camera }, 0);
+        //    }
 
-            if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
-                ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.WriteExternalStorage }, 2);
-            hasPermissions = hasPermissions && Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted;
+        //    hasPermissions = Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.Camera) == (int)Permission.Granted;
 
-            if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) != (int)Permission.Granted)
-                ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.ReadExternalStorage }, 2);
-            hasPermissions = hasPermissions && Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted;
+        //    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
+        //        ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.WriteExternalStorage }, 2);
+        //    hasPermissions = hasPermissions && Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) == (int)Permission.Granted;
 
-            return hasPermissions;
-        }
+        //    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) != (int)Permission.Granted)
+        //        ActivityCompat.RequestPermissions(context, new string[] { Manifest.Permission.ReadExternalStorage }, 2);
+        //    hasPermissions = hasPermissions && Android.Support.V4.Content.ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) == (int)Permission.Granted;
+
+        //    return hasPermissions;
+        //}
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {

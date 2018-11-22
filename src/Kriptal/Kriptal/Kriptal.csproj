@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyButton.cs" />
     <Compile Include="Crypto\AesCrypto.cs" />
     <Compile Include="Crypto\AesResult.cs" />
     <Compile Include="Crypto\RandomGeneration.cs" />
@@ -45,6 +46,7 @@
     <Compile Include="Crypto\RsaKeyPair.cs" />
     <Compile Include="Crypto\ShaHash.cs" />
     <Compile Include="Crypto\ShaResult.cs" />
+    <Compile Include="MyEntry.cs" />
     <Compile Include="Data\LocalDataManager.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\ObservableRangeCollection.cs" />

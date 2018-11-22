@@ -169,7 +169,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New contact in Kriptal.
+        ///   Looks up a localized string similar to New contact.
         /// </summary>
         public static string ContactFromKriptal {
             get {
@@ -178,7 +178,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Kriptal message.
+        ///   Looks up a localized string similar to New message.
         /// </summary>
         public static string Contacts {
             get {
@@ -367,6 +367,15 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you forget this password, your data and messages are lost.
+        /// </summary>
+        public static string PasswordWarning {
+            get {
+                return ResourceManager.GetString("PasswordWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Public Key.
         /// </summary>
         public static string PublicKey {
@@ -453,9 +462,7 @@ namespace Kriptal.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Your password must contain uppercase, lowercase, symbols, numbers, letters, and have a minimum length of 10 characters
-        ///Example: {0}
-        ///
-        ///If you forget this password, your data and messages are lost.
+        ///Example: {0}.
         /// </summary>
         public static string SetPassword {
             get {
