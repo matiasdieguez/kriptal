@@ -9,14 +9,16 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="20" Padding="15">
+            <StackLayout Spacing="20" Padding="15" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                 <!--<StackLayout Orientation="Horizontal">
                     <Label Text="{x:Static localization:AppResources.AttachedFile}" FontSize="Small"/>
                     <Label Text="{Binding FileName}" FontSize="Small"/>
                 </StackLayout>
                 <Button Text="{x:Static localization:AppResources.AttachFile}" Command="{Binding AttachFileCommand}"/>-->
-                <Label Text="{x:Static localization:AppResources.Text}" FontSize="Small"/>
-                <Editor Text="{Binding Text}" HeightRequest="300"/>
+                <Label Text="{x:Static localization:AppResources.Text}" FontSize="Small" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+                <Frame HasShadow="True" CornerRadius="0">
+                <Editor Text="{Binding Text}" HeightRequest="300" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

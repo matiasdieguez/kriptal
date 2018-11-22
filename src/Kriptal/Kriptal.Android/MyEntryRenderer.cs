@@ -17,7 +17,7 @@ namespace Kriptal.Droid
             if (Control != null)
             {
                 Control.SetBackgroundResource(Resource.Drawable.RoundedCornerEntry);
-                Control.SetPadding(20, 10, 10, 4);
+                Control.SetPadding(30, 20, 20, 14);
             }
         }
     }

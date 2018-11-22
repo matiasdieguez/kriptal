@@ -169,7 +169,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New contact in Kriptal.
+        ///   Looks up a localized string similar to New contact.
         /// </summary>
         public static string ContactFromKriptal {
             get {
@@ -178,7 +178,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New Kriptal message.
+        ///   Looks up a localized string similar to New message.
         /// </summary>
         public static string Contacts {
             get {

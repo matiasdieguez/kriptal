@@ -133,10 +133,10 @@
     <value>Cancelar</value>
   </data>
   <data name="ContactFromKriptal" xml:space="preserve">
-    <value>Nuevo contacto en Kriptal</value>
+    <value>Nuevo contacto</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Nuevo mensaje en Kriptal</value>
+    <value>Nuevo mensaje</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
