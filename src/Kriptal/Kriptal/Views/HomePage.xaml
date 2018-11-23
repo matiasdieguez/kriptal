@@ -11,36 +11,35 @@
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                     <local:MyButton 
                         AutomationId="ShareButton" 
-                        Margin="20,20,20,0"
+                        Margin="20,5,20,5"
                         HorizontalOptions="FillAndExpand"
-                        FontSize="Medium"
-                        TextColor="White"
+                        TextColor="{x:StaticResource LightBackgroundColor}"
                         Text="{x:Static localization:AppResources.ShareContact}" 
                         Command="{Binding ShareCommand}"/>
                     <local:MyButton 
                         AutomationId="ScanButton" 
-                        Margin="20,10,20,10"
+                        Margin="20,0,20,5"
                         HorizontalOptions="FillAndExpand"
-                        TextColor="White"
-                        FontSize="Medium"
+                        TextColor="{x:StaticResource LightBackgroundColor}"
                         Text="{x:Static localization:AppResources.ScanContact}" 
                         Clicked="Button_Clicked"/>
                 </StackLayout>
-                <Label 
-                    Text="{x:Static localization:AppResources.QrScanInfo}"
-                    FontSize="Medium"
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="20,0,20,5"
-                    VerticalOptions="Center"/>
                 <Image
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Start"
                     Margin="20,5,20,5"
                     Aspect="AspectFit"
                     Source="{Binding QrCode}"
-                    MinimumHeightRequest="100"
+                    MinimumHeightRequest="80"
                     />
+                <Label 
+                    Text="{x:Static localization:AppResources.QrScanInfo}"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    TextColor="{x:StaticResource MediumGrayTextColor}"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="20,0,20,5"
+                    VerticalOptions="Center"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
