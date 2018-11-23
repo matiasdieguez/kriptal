@@ -3,26 +3,26 @@
   <item android:state_focused="true" >
     <shape android:shape="rectangle">
       <stroke
-          android:width="2dp"
-          android:color="#FFFFFF" />
+          android:width="0dp"
+          android:color="#c0c0c0" />
       <corners
-          android:radius="50dp" />
+          android:radius="0dp" />
       <gradient
-        android:endColor="#0071bc"
-        android:startColor="#0287d1"
+        android:endColor="#16DB9E"
+        android:startColor="#16DB9E"
         android:type="linear" />
     </shape>
   </item>
   <item>
     <shape android:shape="rectangle">
       <stroke
-          android:width="2dp"
-          android:color="#FFFFFF" />
+          android:width="0dp"
+          android:color="#c0c0c0" />
       <corners
-          android:radius="50dp" />
+          android:radius="0dp" />
       <gradient
-        android:endColor="#0071bc"
-        android:startColor="#0287d1"
+        android:endColor="#16DB9E"
+        android:startColor="#16DB9E"
         android:type="linear" />
     </shape>
   </item>

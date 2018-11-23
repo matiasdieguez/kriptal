@@ -17,8 +17,9 @@
                         Grid.Column="0" 
                         HorizontalOptions="FillAndExpand" 
                         VerticalOptions="FillAndExpand" 
-                        Aspect="AspectFill" 
-                        Source="background.png"/>
+                        Aspect="AspectFill"
+                BackgroundColor="White"
+                        />
             <ScrollView Grid.Row="0" 
                         HorizontalOptions="FillAndExpand" 
                         Grid.Column="0" >
@@ -29,7 +30,7 @@
                     <Image 
                         HorizontalOptions="CenterAndExpand"
                         Source="kriptal.png" 
-                        HeightRequest="60"
+                        HeightRequest="80"
                         Aspect="AspectFit"
                             Margin="0,20,0,0"
                     />
@@ -40,12 +41,12 @@
                         BackgroundColor="Transparent"
                         Margin="20,10,20,0"
                         Text="{Binding Name}"
-                        TextColor="{x:StaticResource LightEntryTextColor}"
+                        TextColor="{x:StaticResource PrimaryDark}"
                         IsEnabled="{Binding IsNewAccount}"
                         FontSize="Medium"
                         IsVisible="{Binding IsNewAccount}"
                         Placeholder="{x:Static localization:AppResources.Name}"
-                        PlaceholderColor="{x:StaticResource LightEntryTextColor}"
+                        PlaceholderColor="{x:StaticResource PrimaryDark}"
                         />
                     <local:MyEntry
                         Keyboard="Email"
@@ -53,8 +54,8 @@
                         HorizontalTextAlignment="Start"
                         Margin="20,0,20,0"
                         BackgroundColor="Transparent"
-                        TextColor="{x:StaticResource LightEntryTextColor}"
-                        PlaceholderColor="{x:StaticResource LightEntryTextColor}"
+                        TextColor="{x:StaticResource PrimaryDark}"
+                        PlaceholderColor="{x:StaticResource PrimaryDark}"
                         AutomationId="Email" 
                         FontSize="Medium"
                         Text="{Binding Email}"
@@ -67,8 +68,8 @@
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
                         BackgroundColor="Transparent"
-                        TextColor="{x:StaticResource LightEntryTextColor}"
-                        PlaceholderColor="{x:StaticResource LightEntryTextColor}"
+                        TextColor="{x:StaticResource PrimaryDark}"
+                        PlaceholderColor="{x:StaticResource PrimaryDark}"
                         Margin="20,0,20,0"
                         AutomationId="Password" 
                         FontSize="Medium"
@@ -81,8 +82,8 @@
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
                         BackgroundColor="Transparent"
-                        TextColor="{x:StaticResource LightEntryTextColor}"
-                        PlaceholderColor="{x:StaticResource LightEntryTextColor}"
+                        TextColor="{x:StaticResource PrimaryDark}"
+                        PlaceholderColor="{x:StaticResource PrimaryDark}"
                         Margin="20,0,20,10"
                         AutomationId="RepeatPassword" 
                         FontSize="Medium"
@@ -101,13 +102,12 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             Text="{x:Static localization:AppResources.Enter}" 
-                            FontSize="Medium"
-                            TextColor="White"
+                            TextColor="{x:StaticResource LightBackgroundColor}"
                             Command="{Binding EnterCommand}"/>
                     <Label 
                         FontSize="Medium"
                         HorizontalOptions="FillAndExpand"
-                        TextColor="White"
+                        TextColor="{x:StaticResource MediumGrayTextColor}"
                         VerticalOptions="Start"
                         HorizontalTextAlignment="Start"
                         Margin="20,10,20,0"
@@ -121,26 +121,25 @@
                         HorizontalTextAlignment="Center"
                         Margin="20,20,20,0"
                         VerticalOptions="Start"
-                        TextColor="White"
+                        TextColor="{x:StaticResource MediumGrayTextColor}"
                         Text="{x:Static localization:AppResources.PasswordWarning}"
                    />
                     <local:MyButton
                       BackgroundColor="{x:StaticResource Accent}"
                       HorizontalOptions="FillAndExpand"
                       VerticalOptions="Center"
-                      Margin="20,0,20,20"
+                      Margin="20,10,20,20"
                       Grid.Row="0"
                       Grid.Column="0"
                       Text="{x:Static localization:AppResources.ResetAccount}" 
-                      FontSize="Medium"
-                      TextColor="White"
+                      TextColor="{x:StaticResource LightBackgroundColor}"
                       AutomationId="Reset" 
                       IsEnabled="{Binding NotForNewAccount}"
                       IsVisible="{Binding NotForNewAccount}"
                       Command="{Binding ResetCommand}"
                       />
                     <Label Text="{Binding Text}"
-                           TextColor="White"
+                           TextColor="{x:StaticResource MediumGrayTextColor}"
                            />
                 </StackLayout>
             </ScrollView>
