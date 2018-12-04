@@ -281,4 +281,7 @@ Verifique que ambos usuarios tengan el último contacto de Kriptal del otro.</va
   <data name="PasswordWarning" xml:space="preserve">
     <value>Si olvidas esta contraseña, se pierden todos los datos y mensajes de la cuenta</value>
   </data>
+  <data name="AdText" xml:space="preserve">
+    <value>Los anuncios nos ayudan a mantener la aplicacion gratuita :)</value>
+  </data>
 </root>

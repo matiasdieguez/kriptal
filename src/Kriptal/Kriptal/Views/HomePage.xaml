@@ -9,6 +9,8 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <local:AdControlView/>
+                    <Label Text="{x:Static localization:AppResources.AdText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="DarkSlateGray"/>
                     <local:MyButton 
                         AutomationId="ShareButton" 
                         Margin="20,5,20,5"

@@ -8,6 +8,8 @@
     Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
+            <Label Text="{x:Static localization:AppResources.AdText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="DarkSlateGray"/>
+            <local:AdControlView/>
             <Label Text="{x:Static localization:AppResources.Name}" FontSize="Medium" />
             <Entry Text="{Binding User.Name}" FontSize="Small" />
             <Label Text="{x:Static localization:AppResources.PublicKey}" FontSize="Medium" />

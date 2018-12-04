@@ -2,10 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:Kriptal.Resources"
+             xmlns:local="clr-namespace:Kriptal"
              x:Class="Kriptal.Views.UsersPage"
               Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout>
+            <local:AdControlView/>
+            <Label Text="{x:Static localization:AppResources.AdText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="DarkSlateGray"/>
             <ListView x:Name="UsersListView"
 				ItemsSource="{Binding Users}"
                 VerticalOptions="FillAndExpand"

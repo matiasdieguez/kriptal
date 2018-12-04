@@ -1,6 +1,7 @@
 ﻿using Android;
 using Android.App;
 using Android.Content.PM;
+using Android.Gms.Ads;
 using Android.OS;
 using Android.Support.V4.App;
 using System;
@@ -31,6 +32,7 @@ namespace Kriptal.Droid
 
             App.UriData = uriData;
             var app = new App();
+            MobileAds.Initialize(ApplicationContext, "ca-app-pub-7399296931782080~5354035398");
 
             LoadApplication(app);
         }

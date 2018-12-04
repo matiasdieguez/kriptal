@@ -123,6 +123,15 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds help us keep the app free! :).
+        /// </summary>
+        public static string AdText {
+            get {
+                return ResourceManager.GetString("AdText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment:.
         /// </summary>
         public static string AttachedFile {
