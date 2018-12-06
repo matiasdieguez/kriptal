@@ -27,6 +27,8 @@
                         Orientation="Vertical" 
                         HorizontalOptions="FillAndExpand" 
                         VerticalOptions="Start">
+                    <local:AdControlView/>
+                    <Label Text="{x:Static localization:AppResources.AdText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="DarkSlateGray"/>
                     <Image 
                         HorizontalOptions="CenterAndExpand"
                         Source="kriptal.png" 
@@ -146,6 +148,7 @@
             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" Grid.Row="0" Grid.Column="0"
                                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                        Color="{x:StaticResource Accent}"/>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

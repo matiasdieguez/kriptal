@@ -281,4 +281,7 @@ Verify that both users have the other's last Kriptal Contact.</value>
   <data name="PasswordWarning" xml:space="preserve">
     <value>If you forget this password, your data and messages are lost</value>
   </data>
+  <data name="AdText" xml:space="preserve">
+    <value>Adds help us keep the app free! :)</value>
+  </data>
 </root>

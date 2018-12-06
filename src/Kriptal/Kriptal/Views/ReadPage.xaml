@@ -3,11 +3,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:localization="clr-namespace:Kriptal.Resources"
+    xmlns:local="clr-namespace:Kriptal"
     x:Class="Kriptal.Views.ReadPage"
     Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <StackLayout Orientation="Horizontal">
+                <local:AdControlView/>
+                <Label Text="{x:Static localization:AppResources.AdText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="DarkSlateGray"/>
                 <Label 
                     Text="{x:Static localization:AppResources.MessageFrom}" 
                     FontSize="Medium" />
