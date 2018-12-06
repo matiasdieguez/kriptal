@@ -33,7 +33,7 @@ namespace Kriptal.Droid
             App.UriData = uriData;
             var app = new App();
             //MobileAds.Initialize(ApplicationContext, "ca-app-pub-3940256099942544/6300978111");
-            MobileAds.Initialize(ApplicationContext, "ca-app-pub-7399296931782080~5354035398");
+            MobileAds.Initialize(ApplicationContext, "");
 
             LoadApplication(app);
         }
