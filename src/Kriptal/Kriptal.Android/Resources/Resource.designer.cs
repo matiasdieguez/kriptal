@@ -4087,9 +4087,6 @@ namespace Kriptal.Droid
 			// aapt resource value: 0x7f0a0035
 			public const int appbar_scrolling_view_behavior = 2131361845;
 			
-			// aapt resource value: 0x7f0a003f
-			public const int banner_ad_unit_id = 2131361855;
-			
 			// aapt resource value: 0x7f0a0036
 			public const int bottom_sheet_behavior = 2131361846;
 			

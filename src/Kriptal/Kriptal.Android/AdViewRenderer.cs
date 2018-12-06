@@ -8,7 +8,7 @@ namespace Kriptal.Droid
 {
     public class AdViewRenderer : ViewRenderer<AdControlView, AdView>
     {
-        string adUnitId = "ca-app-pub-7399296931782080/9463304784";
+        string adUnitId;
         //Note you may want to adjust this, see further down.
         AdSize adSize = AdSize.SmartBanner;
         AdView adView;
@@ -18,7 +18,7 @@ namespace Kriptal.Droid
                 return adView;
 
             // This is a string in the Resources/values/strings.xml that I added or you can modify it here. This comes from admob and contains a / in it
-            adUnitId = "ca-app-pub-7399296931782080/9463304784";
+            adUnitId = "ca-app-pub-7399296931782080/9841097782";
             adView = new AdView(Forms.Context);
             adView.AdSize = adSize;
             adView.AdUnitId = adUnitId;
