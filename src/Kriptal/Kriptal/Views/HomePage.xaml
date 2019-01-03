@@ -9,22 +9,22 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <local:AdControlView/>
-                    <Label Text="{x:Static localization:AppResources.AdText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="DarkSlateGray"/>
-                    <local:MyButton 
-                        AutomationId="ShareButton" 
-                        Margin="20,5,20,5"
-                        HorizontalOptions="FillAndExpand"
-                        TextColor="{x:StaticResource LightBackgroundColor}"
-                        Text="{x:Static localization:AppResources.ShareContact}" 
-                        Command="{Binding ShareCommand}"/>
-                    <local:MyButton 
-                        AutomationId="ScanButton" 
-                        Margin="20,0,20,5"
-                        HorizontalOptions="FillAndExpand"
-                        TextColor="{x:StaticResource LightBackgroundColor}"
-                        Text="{x:Static localization:AppResources.ScanContact}" 
-                        Clicked="Button_Clicked"/>
+                    <StackLayout Orientation="Horizontal">
+                        <local:MyButton 
+                            AutomationId="ShareButton" 
+                            Margin="5,5,5,5"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{x:StaticResource LightBackgroundColor}"
+                            Text="{x:Static localization:AppResources.ShareContact}" 
+                            Command="{Binding ShareCommand}"/>
+                        <local:MyButton 
+                            AutomationId="ScanButton" 
+                            Margin="5,5,5,5"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{x:StaticResource LightBackgroundColor}"
+                            Text="{x:Static localization:AppResources.ScanContact}" 
+                            Clicked="Button_Clicked"/>
+                    </StackLayout>
                 </StackLayout>
                 <Image
                     HorizontalOptions="FillAndExpand"

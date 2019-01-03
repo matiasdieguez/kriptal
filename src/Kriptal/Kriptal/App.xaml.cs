@@ -27,8 +27,7 @@ namespace Kriptal
             var about = string.Empty;
             switch (Device.RuntimePlatform)
             {
-                case Device.Windows:
-                case Device.WinPhone:
+                case Device.UWP:
                     home = AppResources.Title;
                     contacts = AppResources.Contacts;
                     about = AppResources.About;

@@ -246,8 +246,7 @@ Physically share your Kriptal QR or use the remote option Send Contact to other 
   <data name="AboutInfoAuthor" xml:space="preserve">
     <value>Created by Matías Dieguez
 https://github.com/matiasdieguez/kriptal
-UI Design by Fernando Dieguez
-Published Free in Play Store by RatKid Security, a division of RatKid Games</value>
+Graphic Design by Fernando Dieguez</value>
   </data>
   <data name="AboutOpenSource" xml:space="preserve">
     <value>Kriptal uses the following Open Source projects:
@@ -282,6 +281,6 @@ Verify that both users have the other's last Kriptal Contact.</value>
     <value>If you forget this password, your data and messages are lost</value>
   </data>
   <data name="AdText" xml:space="preserve">
-    <value>Adds help us keep the app free! :)</value>
+    <value>Ads help us keep the app free! :)</value>
   </data>
 </root>

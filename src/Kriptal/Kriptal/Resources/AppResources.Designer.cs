@@ -86,8 +86,7 @@ namespace Kriptal.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Created by Matías Dieguez
         ///https://github.com/matiasdieguez/kriptal
-        ///UI Design by Fernando Dieguez
-        ///Published Free in Play Store by RatKid Security, a division of RatKid Games.
+        ///Graphic Design by Fernando Dieguez.
         /// </summary>
         public static string AboutInfoAuthor {
             get {
@@ -123,7 +122,7 @@ namespace Kriptal.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds help us keep the app free! :).
+        ///   Looks up a localized string similar to Ads help us keep the app free! :).
         /// </summary>
         public static string AdText {
             get {

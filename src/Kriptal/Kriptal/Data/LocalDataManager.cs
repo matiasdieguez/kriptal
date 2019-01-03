@@ -16,7 +16,7 @@ namespace Kriptal.Data
         public LocalDataManager(byte[] key)
         {
             Key = key;
-            if (Device.RuntimePlatform == Device.Windows || Device.RuntimePlatform == Device.WinPhone)
+            if (Device.RuntimePlatform == Device.UWP)
                 Config = new RealmConfiguration { ShouldDeleteIfMigrationNeeded = true };
             else
                 Config = new RealmConfiguration { ShouldDeleteIfMigrationNeeded = true, EncryptionKey = key };

@@ -11,8 +11,6 @@
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="0">
             <StackLayout Orientation="Vertical" Spacing="10">
-                <local:AdControlView/>
-                <Label Text="{x:Static localization:AppResources.AdText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="DarkSlateGray"/>
                 <Image Source="kriptal.png" VerticalOptions="Center" HeightRequest="64" Margin="15,0,0,0"/>
                 <Label FontSize="Medium" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
@@ -20,7 +18,7 @@
                             <FormattedString.Spans>
                                 <Span Text="Kriptal" FontAttributes="Bold" FontSize="Large"/>
                                 <Span Text=" "/>
-                                <Span Text="1.0.3" ForegroundColor="{StaticResource LightTextColor}"/>
+                                <Span Text="1.0.0" ForegroundColor="{StaticResource LightTextColor}"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
